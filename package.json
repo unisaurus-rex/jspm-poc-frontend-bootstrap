@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "node-sass --source-map true --include-path resources/sass --output styles/css resources/sass/style.scss",
+    "watch-sass": "node-sass --source-map true --watch resources/sass --output styles/css resources/sass/style.scss" 
   },
   "author": "",
   "license": "ISC",
