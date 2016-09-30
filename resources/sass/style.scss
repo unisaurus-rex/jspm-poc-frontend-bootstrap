@@ -1,0 +1,38 @@
+// Add custom font
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,700,300);
+$font-family-base: 'Raleway', sans-serif;
+
+
+
+// Import bootstrap and fontawesome
+@import "custom-variables";
+@import "../../jspm_packages/github/twbs/bootstrap-sass@3.3.7/assets/stylesheets/bootstrap";
+@import "../../jspm_packages/npm/font-awesome@4.6.3/scss/font-awesome";
+@import "sidebar";
+
+
+.menu-item{
+  //padding-right: 20px;
+}
+
+.column{
+  //background: $white;
+  //padding: 5px;
+  //margin-top: 30px;
+  //margin-right: 15px;
+  //margin-left: 15px;
+}
+
+.content-container {
+  //background: $light-gray;
+}
+
+.panel { //!!!!!!!need to clean up and make modular later!!!!
+  margin: 20px 0 0 10px;
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, -0.95);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  padding: 15px;
+}
