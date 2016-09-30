@@ -19,6 +19,7 @@ System.config({
     "bootstrap-sass": "github:twbs/bootstrap-sass@3.3.7",
     "core-js": "npm:core-js@1.2.7",
     "font-awesome": "npm:font-awesome@4.6.3",
+    "jquery": "npm:jquery@3.1.1",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.4.1"
     },
