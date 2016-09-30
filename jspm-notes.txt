@@ -1,0 +1,14 @@
+Setup Notes:
+For development, in index.html, the system.js file must be loaded before config.js
+
+Dependencies:
+bootstrap-sass does not list jquery as a dependency so you need to manually list it in startup.js
+
+Installation after downloading project files:
+- run npm install first, then run jspm install
+- any package that is needed for front end code should be installed by jspm
+  + this is because jspm builds a registry in config.js that system.js uses to reference packages
+    when they're imported in a file
+- any package only needed as a build tool or backed resource should be installed by npm
+
+
