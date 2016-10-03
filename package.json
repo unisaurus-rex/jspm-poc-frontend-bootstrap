@@ -4,20 +4,29 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "bundle-js": "jspm bundle-sfx scripts/startup build/build.js",
+    "bundle-sass": "node-sass --source-map true --include-path resources/sass --output-style compressed --output build/styles/css resources/sass/style.scss",
+    "build": "npm run bundle-js && npm run bundle-sass && npm run copy-fonts",
+    "clean-css": "rimraf build/styles/css",
+    "clean-fonts": "rimraf build/styles/fonts",
+    "clean-styles": "npm run clean-css && npm run clean-fonts",
+    "copy-fonts": "copyfiles -u 1 styles/fonts/**/* styles/fonts/* build/styles",
+    "prebuild": "npm run clean-styles",
     "sass": "node-sass --source-map true --include-path resources/sass --output styles/css resources/sass/style.scss",
-    "watch-sass": "node-sass --source-map true --watch resources/sass --output styles/css resources/sass/style.scss" 
+    "watch-sass": "node-sass --source-map true --watch resources/sass --output styles/css resources/sass/style.scss"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "copyfiles": "^1.0.0",
     "gulp": "^3.9.1",
     "gulp-bower": "0.0.13",
     "gulp-notify": "^2.2.0",
     "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "^1.6.0",
     "jspm": "^0.16.45",
-    "node-sass": "^3.10.1"
+    "node-sass": "^3.10.1",
+    "rimraf": "^2.5.4"
   },
   "jspm": {
     "dependencies": {
