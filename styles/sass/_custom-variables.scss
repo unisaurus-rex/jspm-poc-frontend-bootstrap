@@ -8,15 +8,14 @@ $bootstrap-sass-asset-helper: false !default;
 //
 
 $gray-base:              #000 !default; // not Vantiv brand color
-$gray-darker:            lighten($gray-base, 13.5%) !default; // #222 not Vantiv brand color
 $gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee not Vantiv brand color
 
 // Vantiv brand colors
-
+$gray-darker:            #2c2c2c !default;
 $gray-dark:              #4D4F53 !default;
 $gray:                   #8B8C8D !default;
 $gray-light:             #E5E5E5 !default;
-
+$white:                  #ffffff !default;
 
 $brand-primary:         #2C2C2C !default;
 $brand-success:         #40C1AC !default;

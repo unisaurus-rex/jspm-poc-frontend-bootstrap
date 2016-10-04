@@ -9,16 +9,16 @@
 }
 
 #wrapper.toggled {
-  padding-left: 250px;
+  padding-left: 320px;
 }
 
 #sidebar-wrapper {
   z-index: 1000;
   position: fixed;
-  left: 250px;
+  left: 320px;
   width: 0;
   height: 100%;
-  margin-left: -250px;
+  margin-left: -320px;
   overflow-y: auto;
   background: $gray-darker;
   -webkit-transition: all 0.5s ease;
@@ -28,7 +28,7 @@
 }
 
 #wrapper.toggled #sidebar-wrapper {
-  width: 250px;
+  width: 320px;
 }
 
 #page-content-wrapper {
@@ -38,61 +38,64 @@
 
 #wrapper.toggled #page-content-wrapper {
   position: absolute;
-  margin-right: -250px;
+
 }
+
+// The custom styling for the header of the sidebar navigation menu
+// Extended from the Bootstrap page-header class
+.page-header {
+  color: $white;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  height: 17px;
+  width: 229px;
+  line-height: 0.47;
+  border: none;
+  text-align: left;
+  margin: 23px 40px 48px;
+  white-space: nowrap;
+}
+
 
 /* Sidebar Styles */
 
-.sidebar-nav {
-  position: absolute;
-  top: 0;
-  width: 250px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-
+// Extended class from Font Awesome, list-group-item used for
+// a list of items with associated icons in the sidebar navigation
+.list-group-item {
+  background-color: $gray-darker;
+  border: none;
+  width: 320px;
+  height: 55px;
 }
 
-.sidebar-nav li {
-  text-indent: 20px;
-  line-height: 40px;
-
+a.list-group-item {
+  color: #e5e5e5;
+  font-size:20px;
+  line-height: 0.56;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  text-align: left;
+  padding-left: 40px;
 }
 
-.sidebar-nav li a {
-  display: block;
-  text-decoration: none;
-  color: #fff;
-}
-
-.sidebar-nav li a:hover {
-  text-decoration: none;
-  color: #fff;
-  background: rgba(255,255,255,0.2);
-}
-
-.sidebar-nav li a:active,
-.sidebar-nav li a:focus {
-  text-decoration: none;
-}
-
-.sidebar-nav > .sidebar-brand {
-  text-indent: 40px;
-  height: 65px;
-  font-size: 18px;
-  line-height: 60px;
-  color: #fff;
-}
-
-
-.sidebar-nav > .sidebar-brand a:hover {
+a.list-group-item:hover {
   color: #fff;
   background: none;
 }
 
+a.list-group-item:active,
+a.list-group-item:focus {
+  text-decoration: none;
+  background-color: $gray;
+  color: $white;
+}
+
+
 @media(min-width:1200px) {
   #wrapper {
-    padding-left: 250px;
+    padding-left: 320px;
   }
 
   #wrapper.toggled {
@@ -101,7 +104,7 @@
   }
 
   #sidebar-wrapper {
-    width: 250px;
+    width: 320px;
   }
 
   #wrapper.toggled #sidebar-wrapper {
