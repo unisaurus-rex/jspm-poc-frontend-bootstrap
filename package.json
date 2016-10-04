@@ -19,11 +19,6 @@
   "license": "ISC",
   "devDependencies": {
     "copyfiles": "^1.0.0",
-    "gulp": "^3.9.1",
-    "gulp-bower": "0.0.13",
-    "gulp-notify": "^2.2.0",
-    "gulp-sass": "^2.3.2",
-    "gulp-sourcemaps": "^1.6.0",
     "jspm": "^0.16.45",
     "node-sass": "^3.10.1",
     "rimraf": "^2.5.4"
