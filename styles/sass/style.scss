@@ -11,12 +11,59 @@ $font-family-base: Foundry Context;
 @import "sidebar";
 
 
+/** Navigation bar across the top of the page **/
+
+//Bootstrap navbar-brand class
+//
+//This is where the logo is contained in the upper left corner
+//of the navbar.
+//Make the height inherit in order to have the pixel size of
+//height: 156px and width: 41px show correctly.
+.navbar-brand {
+  height: inherit;
+}
+
+//Bootstrap's navbar-default and navbar-nav classes
+//
+//These are the navigation links on the right side
+//of the navbar (Back to iQ, Logout)
+//
+//Adjust margin to have links sit towards the bottom
+//of the navbar (otherwise it sits towards the top)
+//Increase the font-size and change color to Vantiv brand
+//dark gray
+.navbar-default .navbar-nav > li > a {
+  margin-top: 28px;
+  font-size: 20px;
+  color: $gray-dark;
+}
+
+//Bootstrap's navbar-default class
+//
+//This is the class that controls the styling of the navigation bar
+//across the top of the page (where the logo and navigation links
+//such as Logout and Back to iQ are located) - This class is contained
+//within the page-content-wrapper class
+//
+//Customizations made to change the background color to white, create a box-shadow
+//effect and adjust height to 80 px to make the bar taller
+//and increase the bottom margin to add more space between navbar and
+//content containers
 .navbar-default {
   background-color: $white;
   box-shadow: 0px 2px 2px 0px rgba(2, 2, 2, 0.2);
   height: 80px;
+  margin-bottom: 37px;
 }
 
+/** Page content **/
+
+.container-fluid {
+  padding-left: 26px;
+  padding-right: 36px;
+}
+
+//Bootstrap's panel class
 .panel { //!!!!!!!need to clean up and make modular later!!!!
   margin: 20px 0 0 10px;
   background-color: #fff;
@@ -24,5 +71,9 @@ $font-family-base: Foundry Context;
   border-radius: 2px;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, -0.95);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-  padding: 15px;
+  padding: 0px 15px 15px 15px;
+  font-size: 20px;
+}
+.panel > a{
+  font-size: 12px;
 }
