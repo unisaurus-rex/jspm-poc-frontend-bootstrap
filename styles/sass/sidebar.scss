@@ -1,3 +1,4 @@
+@import "custom-variables";
 // Custom style for the sidebar navigation menu
 
 #wrapper {
@@ -45,6 +46,7 @@
 // Extended from the Bootstrap page-header class
 .page-header {
   color: $white;
+  font-size: 24px;
   font-weight: bold;
   font-style: normal;
   font-stretch: normal;
@@ -60,36 +62,20 @@
 
 /* Sidebar Styles */
 
-// Extended class from Font Awesome, list-group-item used for
+// Extended class from Bootstrap, list-group-item used for
 // a list of items with associated icons in the sidebar navigation
 .list-group-item {
-  background-color: $gray-darker;
-  border: none;
   width: 320px;
   height: 55px;
 }
 
 a.list-group-item {
-  color: #e5e5e5;
-  font-size:20px;
   line-height: 0.56;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
   text-align: left;
   padding-left: 40px;
-}
-
-a.list-group-item:hover {
-  color: #fff;
-  background: none;
-}
-
-a.list-group-item:active,
-a.list-group-item:focus {
-  text-decoration: none;
-  background-color: $gray;
-  color: $white;
 }
 
 

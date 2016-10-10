@@ -35,13 +35,13 @@
     <div id="sidebar-wrapper">
       <h3 class="page-header">Unistar Credit Union<br><br><small>123456-789011-1213145 FI#</small></h3>
       <div class="list-group">
-        <a class="list-group-item" href="#"><i class="fa fa-tachometer fa-fw"></i>&nbsp;&nbsp; Dashboard</a>
-        <a class="list-group-item" href="#"><i class="fa fa-file-text-o fa-fw"></i>&nbsp;&nbsp; Custom Reporting</a>
-        <a class="list-group-item" href="#"><i class="fa fa-users fa-fw"></i>&nbsp;&nbsp; Shopper Insights</a>
-        <a class="list-group-item" href="#"><i class="fa fa-cog fa-fw"></i>&nbsp;&nbsp; Settings</a>
-        <a class="list-group-item" href="#"><i class="fa fa-suitcase fa-fw"></i>&nbsp;&nbsp; Support</a>
-        <a class="list-group-item" href="#"><i class="fa fa-reply fa-fw"></i>&nbsp;&nbsp; Back to iQ</a>
-        <a class="list-group-item" href="#"><i class="fa fa-sign-out fa-fw"></i>&nbsp;&nbsp; Logout</a>
+        <a class="list-group-item list-group-item-action" href="#"><i class="fa fa-tachometer fa-fw"></i>&nbsp;&nbsp; Dashboard</a>
+        <a class="list-group-item list-group-item-action" href="#"><i class="fa fa-file-text-o fa-fw"></i>&nbsp;&nbsp; Custom Reporting</a>
+        <a class="list-group-item list-group-item-action" href="#"><i class="fa fa-users fa-fw"></i>&nbsp;&nbsp; Shopper Insights</a>
+        <a class="list-group-item list-group-item-action" href="#"><i class="fa fa-cog fa-fw"></i>&nbsp;&nbsp; Settings</a>
+        <a class="list-group-item list-group-item-action" href="#"><i class="fa fa-suitcase fa-fw"></i>&nbsp;&nbsp; Support</a>
+        <a class="list-group-item list-group-item-action" href="#"><i class="fa fa-reply fa-fw"></i>&nbsp;&nbsp; Back to iQ</a>
+        <a class="list-group-item list-group-item-action" href="#"><i class="fa fa-sign-out fa-fw"></i>&nbsp;&nbsp; Logout</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -76,16 +76,56 @@
       <div class="flex-row row">
         <div class="col-lg-9 col-md-9 col-sm-12 ">
           <div class="panel">
-            <h4>Portfolio Trends</h4>
-            <a href="#">Create Report</a>
-            <img src="http://placehold.it/1070x240" class="img-responsive">
+            <div class="panel-heading">
+              <h3 class="panel-title">Portfolio Trends <i class="fa fa-arrows pull-right" aria-hidden="true"></i><i class="fa fa-cog pull-right"></i> <i class="fa fa-question-circle pull-right"></i></h3>
+              <a href="#">Create Report</a>
+            </div>
+            <img src="http://placehold.it/800x300" class="img-responsive">
           </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-12">
           <div class="panel">
-            <h4>Custom Alerts</h4>
-            <a href="#">Create Report</a>
-            <img src="http://placehold.it/423x625" class="img-responsive">
+            <div class="panel-heading">
+
+
+              <h3 class="panel-title">Custom Alerts <i class="fa fa-arrows pull-right" aria-hidden="true"></i><i class="fa fa-cog pull-right"></i> <i class="fa fa-question-circle pull-right"></i></h3>
+
+              <a href="#">Create Report</a>
+            </div>
+            <div class="panel-body">
+              <div class="alert alert-dismissible" role="alert">
+              <div class="panel panel-info">
+                <div class="panel-heading" >Panel title info<a class="btn-info pull-right fa fa-close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></a></div>
+                <div class="panel-body">
+                  Message with <a class="alert-info" href="#" >actionable link.</a>
+                </div>
+              </div>
+                </div>
+              <div class="alert alert-dismissible" role="alert">
+                <div class="panel panel-danger">
+                <div class="panel-heading">Panel title Danger<a class="btn-danger pull-right fa fa-close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></a></div>
+                <div class="panel-body">
+                  Message with <a href="#" class="alert-danger">actionable link.</a>
+                </div>
+              </div>
+              </div>
+              <div class="alert alert-dismissible" role="alert">
+                <div class="panel panel-warning">
+                <div class="panel-heading">Panel title Warning<a class="btn-warning pull-right fa fa-close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></a></div>
+                <div class="panel-body">
+                  Message with <a href="#" class="alert-warning">actionable link.</a>
+                </div>
+              </div>
+              </div>
+              <div class="alert alert-dismissible" role="alert">
+                <div class="panel panel-success">
+                <div class="panel-heading">Panel title Success<a class="btn-success pull-right fa fa-close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></a></div>
+                <div class="panel-body">
+                  Your custom alert "Last Years Goal" has triggered. View the report at <a href="#" class="alert-success">this link.</a>
+                </div>
+              </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -95,33 +135,40 @@
         <div class="col-lg-3 col-md-3 col-sm-6">
           <div class="panel panel-primary">
             <div class="panel-body">
-              Panel content
+              <h2 class="text-center">26</h2>
+              <p class="text-center alert-success">AVG. CARD USAGE</p>
             </div>
-            <div class="panel-footer">Panel footer</div>
+            <div class="panel-footer success">
+            <p class="text-center">13% INCREASE</p>
+            </div>
           </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-6">
           <div class="panel panel-success">
             <div class="panel-body">
-              Panel content
+              <h2 class="text-center">$95K</h2>
+              <p class="text-center alert-success">INTERCHANGE</p>
             </div>
-            <div class="panel-footer panel-success">Panel footer</div>
+            <div class="panel-footer success"><p class="text-center">4% INCREASE</p></div>
           </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-6">
           <div class="panel panel-warning">
             <div class="panel-body">
-              Panel content
+              <h2 class="text-center">19</h2>
+              <p class="text-center alert-danger">FRAUD BPS</p>
             </div>
-            <div class="panel-footer">Panel footer</div>
+            <div class="panel-footer danger">
+              <p class="text-center">21% DECREASE</p></div>
           </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-6">
           <div class="panel panel-danger">
             <div class="panel-body">
-              Panel content
+              <h2 class="text-center">$25.32</h2>
+              <p class="text-center alert-danger">AVG. TRANSACTION</p>
             </div>
-            <div class="panel-footer">Panel footer</div>
+            <div class="panel-footer danger"><p class="text-center">5% DECREASE</p></div>
           </div>
         </div>
       </div>
@@ -130,15 +177,27 @@
       <div class="flex-row row">
         <div class="col-lg-4 col-md-6 col-sm-12">
           <div class="panel">
-            <h4>Portfolio Trends</h4>
-            <a href="#">Create Report</a>
+            <div class="panel-heading">
+              <h3 class="panel-title">CC Transactions
+                <i class="fa fa-arrows pull-right" aria-hidden="true"></i>
+                <i class="fa fa-cog pull-right"></i>
+                <i class="fa fa-question-circle pull-right"></i>
+              </h3>
+              <a href="#">Create Report</a>
+            </div>
             <img src="http://placehold.it/400x200" class="img-responsive">
           </div>
         </div>
         <div class="col-lg-8 col-md-6 col-sm-12 ">
           <div class="panel">
-            <h4>Portfolio Trends</h4>
-            <a href="#">Create Report</a>
+            <div class="panel-heading">
+              <h3 class="panel-title">Year Over Year Metrics
+                <i class="fa fa-arrows pull-right" aria-hidden="true"></i>
+                <i class="fa fa-cog pull-right"></i>
+                <i class="fa fa-question-circle pull-right"></i>
+              </h3>
+              <a href="#">Create Report</a>
+            </div>
             <img src="http://placehold.it/800x200" class="img-responsive">
           </div>
         </div>

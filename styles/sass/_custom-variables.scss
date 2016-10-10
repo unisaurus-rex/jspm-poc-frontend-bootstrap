@@ -54,12 +54,12 @@ $font-family-serif:       Georgia, "Times New Roman", Times, serif !default;
 $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
 $font-family-base:        $font-family-sans-serif !default;
 
-$font-size-base:          14px !default;
+$font-size-base:          20px !default;
 $font-size-large:         ceil(($font-size-base * 1.25)) !default; // ~18px
 $font-size-small:         ceil(($font-size-base * 0.85)) !default; // ~12px
 
 $font-size-h1:            floor(($font-size-base * 2.6)) !default; // ~36px
-$font-size-h2:            floor(($font-size-base * 2.15)) !default; // ~30px
+$font-size-h2:            30px !default; // ~30px
 $font-size-h3:            ceil(($font-size-base * 1.7)) !default; // ~24px
 $font-size-h4:            ceil(($font-size-base * 1.25)) !default; // ~18px
 $font-size-h5:            $font-size-base !default;
@@ -112,7 +112,7 @@ $padding-xs-horizontal:     5px !default;
 $line-height-large:         1.3333333 !default; // extra decimals for Win 8.1 Chrome
 $line-height-small:         1.5 !default;
 
-$border-radius-base:        2px !default;
+$border-radius-base:        1px !default;
 $border-radius-large:       3px !default;
 $border-radius-small:       2px !default;
 
@@ -151,6 +151,10 @@ $table-border-color:            #ddd !default;
 //== Buttons
 //
 //## For each of Bootstrap's buttons, define text, background and border color.
+// Customization changes:
+// 1. Eliminate the button border on $btn-info-border, $btn-success-border, $btn-danger-border
+//    and $btn-warning-border
+// 2. Change the link hover color to not change
 
 $btn-font-weight:                normal !default;
 
@@ -168,11 +172,11 @@ $btn-success-border:             darken($btn-success-bg, 5%) !default;
 
 $btn-info-color:                 #fff !default;
 $btn-info-bg:                    $brand-info !default;
-$btn-info-border:                darken($btn-info-bg, 5%) !default;
+$btn-info-border:                $btn-info-bg !default;
 
 $btn-warning-color:              #fff !default;
 $btn-warning-bg:                 $brand-warning !default;
-$btn-warning-border:             darken($btn-warning-bg, 5%) !default;
+$btn-warning-border:             $btn-warning-bg !default;
 
 $btn-danger-color:               #fff !default;
 $btn-danger-bg:                  $brand-danger !default;
@@ -506,21 +510,21 @@ $jumbotron-heading-font-size:    ceil(($font-size-base * 4.5)) !default;
 //
 //## Define colors for form feedback states and, by default, alerts.
 
-$state-success-text:             #3c763d !default;
-$state-success-bg:               #dff0d8 !default;
-$state-success-border:           darken(adjust-hue($state-success-bg, -10), 5%) !default;
+$state-success-text:             $brand-success !default;
+$state-success-bg:               $brand-success !default;
+$state-success-border:           $gray-light !default;
 
-$state-info-text:                #31708f !default;
-$state-info-bg:                  #d9edf7 !default;
-$state-info-border:              darken(adjust-hue($state-info-bg, -10), 7%) !default;
+$state-info-text:                $brand-info !default;
+$state-info-bg:                  $brand-info !default;
+$state-info-border:              $gray-light !default;
 
-$state-warning-text:             #8a6d3b !default;
-$state-warning-bg:               #fcf8e3 !default;
-$state-warning-border:           darken(adjust-hue($state-warning-bg, -10), 5%) !default;
+$state-warning-text:             $brand-warning !default;
+$state-warning-bg:               $brand-warning !default;
+$state-warning-border:           $gray-light !default;
 
-$state-danger-text:              #a94442 !default;
-$state-danger-bg:                #f2dede !default;
-$state-danger-border:            darken(adjust-hue($state-danger-bg, -10), 5%) !default;
+$state-danger-text:              $brand-danger !default;
+$state-danger-bg:                $brand-danger !default;
+$state-danger-border:            $gray-light !default;
 
 
 //== Tooltips
@@ -630,25 +634,29 @@ $modal-sm:                    300px !default;
 //
 //## Define alert colors, border radius, and padding.
 
-$alert-padding:               15px !default;
+//Custom change $alert-padding to -20 to offset the alert-dismissible class
+// padding-right = $alert-padding + 20, this padding is overridden by the
+// panel-body class with 15px on all sides.
+
+$alert-padding:               -20px !default;
 $alert-border-radius:         $border-radius-base !default;
 $alert-link-font-weight:      bold !default;
 
-$alert-success-bg:            $state-success-bg !default;
+$alert-success-bg:            transparent !default;
 $alert-success-text:          $state-success-text !default;
-$alert-success-border:        $state-success-border !default;
+$alert-success-border:        transparent !default;
 
-$alert-info-bg:               $state-info-bg !default;
+$alert-info-bg:               transparent !default;
 $alert-info-text:             $state-info-text !default;
-$alert-info-border:           $state-info-border !default;
+$alert-info-border:           transparent !default;
 
-$alert-warning-bg:            $state-warning-bg !default;
+$alert-warning-bg:            transparent !default;
 $alert-warning-text:          $state-warning-text !default;
-$alert-warning-border:        $state-warning-border !default;
+$alert-warning-border:        transparent !default;
 
-$alert-danger-bg:             $state-danger-bg !default;
+$alert-danger-bg:             transparent !default;
 $alert-danger-text:           $state-danger-text !default;
-$alert-danger-border:         $state-danger-border !default;
+$alert-danger-border:         transparent !default;
 
 
 //== Progress bars
@@ -679,22 +687,22 @@ $progress-bar-info-bg:        $brand-info !default;
 //##
 
 //** Background color on `.list-group-item`
-$list-group-bg:                 #fff !default;
+$list-group-bg:                 $gray-darker !default;
 //** `.list-group-item` border color
-$list-group-border:             #ddd !default;
+$list-group-border:             none !default;
 //** List group border radius
 $list-group-border-radius:      $border-radius-base !default;
 
 //** Background color of single list items on hover
-$list-group-hover-bg:           #f5f5f5 !default;
+$list-group-hover-bg:           $gray !default;
 //** Text color of active list items
-$list-group-active-color:       $component-active-color !default;
+$list-group-active-color:       $white !default;
 //** Background color of active list items
-$list-group-active-bg:          $component-active-bg !default;
+$list-group-active-bg:          $gray !default;
 //** Border color of active list elements
 $list-group-active-border:      $list-group-active-bg !default;
 //** Text color for content within active list items
-$list-group-active-text-color:  lighten($list-group-active-bg, 40%) !default;
+$list-group-active-text-color:   $white !default;
 
 //** Text color of disabled list items
 $list-group-disabled-color:      $gray-light !default;
@@ -703,9 +711,9 @@ $list-group-disabled-bg:         $gray-lighter !default;
 //** Text color for content within disabled list items
 $list-group-disabled-text-color: $list-group-disabled-color !default;
 
-$list-group-link-color:         #555 !default;
-$list-group-link-hover-color:   $list-group-link-color !default;
-$list-group-link-heading-color: #333 !default;
+$list-group-link-color:         $gray-light !default;
+$list-group-link-hover-color:   $white!default;
+$list-group-link-heading-color: $gray-light !default;
 
 
 //== Panels
@@ -730,19 +738,19 @@ $panel-primary-text:          #fff !default;
 $panel-primary-border:        $brand-primary !default;
 $panel-primary-heading-bg:    $brand-primary !default;
 
-$panel-success-text:          $state-success-text !default;
+$panel-success-text:          $white !default;
 $panel-success-border:        $state-success-border !default;
 $panel-success-heading-bg:    $state-success-bg !default;
 
-$panel-info-text:             $state-info-text !default;
+$panel-info-text:             $white !default;
 $panel-info-border:           $state-info-border !default;
 $panel-info-heading-bg:       $state-info-bg !default;
 
-$panel-warning-text:          $state-warning-text !default;
+$panel-warning-text:          $white !default;
 $panel-warning-border:        $state-warning-border !default;
 $panel-warning-heading-bg:    $state-warning-bg !default;
 
-$panel-danger-text:           $state-danger-text !default;
+$panel-danger-text:           $white !default;
 $panel-danger-border:         $state-danger-border !default;
 $panel-danger-heading-bg:     $state-danger-bg !default;
 
