@@ -79,6 +79,7 @@ $font-family-base: Foundry Context;
   color: $brand-primary;
 }
 
+//Use for panel footer background brand colors success and danger
 .success{
   background-color: transparentize($brand-success, 0.85);
 }
@@ -92,7 +93,6 @@ $font-family-base: Foundry Context;
 .alert {
   margin-bottom: 0px;
 }
-
 
 
 }
