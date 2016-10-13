@@ -5891,10 +5891,6 @@ a.list-group-item {
     position: relative;
     margin-right: 0; } }
 
-/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!DONUT STUFFF*/
-.d3-tip {
-  background-color: #507075; }
-
 .d3-tip {
   line-height: 1;
   font-weight: bold;
@@ -5922,23 +5918,6 @@ a.list-group-item {
   top: 100%;
   left: 0; }
 
-div.tooltip {
-  position: absolute;
-  text-align: center;
-  width: 60px;
-  padding: 2px;
-  font: 12px sans-serif;
-  background: lightsteelblue;
-  border: 0px;
-  border-radius: 8px;
-  pointer-events: none; }
-
-/*.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: auto;
-}*/
 /* donut */
 .inside {
   font-family: 'Source Sans Pro', sans-serif;
@@ -5948,9 +5927,6 @@ div.tooltip {
 .data {
   fill: #2c2c2c;
   font-size: 64px; }
-
-.padding {
-  padding: 10%; }
 
 svg.svg-content-responsive-pie {
   display: block;

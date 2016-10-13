@@ -14,7 +14,7 @@ function drawDonut(){
   //set the tooltip
   var tiptwo = d3.tip()
     .attr('class', 'd3-tip')
-    .offset([35, 0])
+    .offset([0, 0])
     .html(function(d) {
       return "<strong>" + d.data.age +":</strong> <span>" + d.data.population  + "</span>";
     })
