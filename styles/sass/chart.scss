@@ -1,0 +1,85 @@
+
+$teal: #507075;
+$vantiv-blue: #00a9e0;
+$grey-black: #2c2c2c;
+$height: 300px;
+$light-grey: #8b8c8d;
+$even-lighter-grey: #dee7ef;
+$donut-width: 50%;
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!DONUT STUFFF*/
+.d3-tip {
+	background-color: $teal;
+}
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+  font-size: 15px
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+div.tooltip { 
+  position: absolute;     
+  text-align: center;     
+  width: 60px;               
+  padding: 2px;       
+  font: 12px sans-serif;    
+  background: lightsteelblue; 
+  border: 0px;    
+  border-radius: 8px;     
+  pointer-events: none;     
+}
+
+
+/*.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: auto;
+}*/
+
+/* donut */
+.inside {
+  font-family: 'Source Sans Pro', sans-serif;
+  fill: $vantiv-blue;
+  font-size:40px;
+}
+.data{
+  fill: $grey-black;
+  font-size: 64px;
+}
+
+.padding{
+  padding: 10%;
+}
+svg.svg-content-responsive-pie{
+  display: block;
+  margin: auto;
+  width: $donut-width;
+  height: $donut-width;
+  overflow: visible;
+
+}
