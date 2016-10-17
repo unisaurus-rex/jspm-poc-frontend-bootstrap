@@ -75,9 +75,7 @@ $font-family-base: Foundry Context;
  a{
   font-size: 12px;
 }
-.panel-footer {
-  color: $brand-primary;
-}
+
 
 //Use for panel footer background brand colors success and danger
 .success{
@@ -92,6 +90,18 @@ $font-family-base: Foundry Context;
 
 .alert {
   margin-bottom: 0px;
+}
+
+
+// checkboxes in the panel footers
+.panel-footer .btn > i.fa {
+    opacity: 0;
+
+}
+
+.panel-footer .btn.active > i.fa {
+    opacity: 1;
+
 }
 
 
@@ -112,10 +122,17 @@ $font-family-base: Foundry Context;
 
     .flex-row .thumbnail,
 .flex-row .caption,
-.flex-row .panel {
+.flex-row .panel{
     display: flex;
     flex: 1 0 auto;
     flex-direction: column;
+
+}
+.flex-row .panel-group{
+  overflow-y: auto;
+}
+.flex-row .panel-body{
+  overflow-y: auto;
 }
 .flex-text {
     flex-grow: 1;
