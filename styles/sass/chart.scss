@@ -14,7 +14,7 @@ $donut-width: 50%;
   background: rgba(0, 0, 0, 0.8);
   color: #fff;
   border-radius: 2px;
-  font-size: 15px
+  font-size: 14px
 }
 
 /* Creates a small triangle extender for the tooltip */
@@ -53,5 +53,5 @@ svg.svg-content-responsive-pie{
   margin: auto;
   width: $donut-width;
   height: $donut-width;
-  overflow: visible;
+  padding: 2%;
 }

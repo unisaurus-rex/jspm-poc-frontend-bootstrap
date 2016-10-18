@@ -78,14 +78,13 @@
             <div class="panel-heading">
               <ul class="list-inline text-center">
                 <li class="pull-left">
-                  <ul>
+                  <ul class="list-unstyled">
                     <li class="pull-left"><h3 class="panel-title">Portfolio Trends</h3></li>
-                    <li><a href="#">Create Report</a></li>
+                    <li class="text-left"><a href="#">Create Report</a></li>
                   </ul>
                 </li>
-
-                <div class="btn-group">
-                  <button type="button" class="btn btn-info">Action</button>
+                <li class="btn-group btn-group-sm">
+                  <button type="button" class="btn btn-info">Current Year</button>
                   <button type="button" class="btn btn-info dropdown-toggle text-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="caret"></span>
                     <span class="sr-only">Toggle Dropdown</span>
@@ -97,66 +96,95 @@
                     <li role="separator" class="divider"></li>
                     <li><a href="#">Separated link</a></li>
                   </ul>
-                </div>
-                <li class="pull-right"><i class="fa fa-question-circle fa-2x fa-fw text-muted"></i></li>
-                <li class="pull-right"><i class="fa fa-cog fa-2x fa-fw text-muted"></i></li>
-                <li class="pull-right"><i class="fa fa-arrows fa-2x fa-fw text-muted" aria-hidden="true"></i></li>
+                </li>
+                <li class="btn-group btn-group-sm">
+                  <button type="button" class="btn btn-info">Transactions</button>
+                  <button type="button" class="btn btn-info dropdown-toggle text-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                  </ul>
+                </li>
+                <li class="pull-right"><a href="#"><i class="fa fa-arrows fa-2x fa-fw text-muted" aria-hidden="true"></i></a></li>
+                <li class="pull-right"><a href="#"><i class="fa fa-cog fa-2x fa-fw text-muted"></i></a></li>
+                <li class="pull-right"><a href="#"><i class="fa fa-question-circle fa-2x fa-fw text-muted"></i></a></li>
               </ul>
               <!-- Split button -->
-
-
-
             </div>
-            <img src="http://placehold.it/800x300" class="img-responsive">
+            <div class="panel-body"><img src="http://placehold.it/800x350" class="img-responsive"></div>
+            <div class="panel-footer">
+              <ul class="list-inline text-center">
+                <li class="btn-group btn-group-xs" data-toggle="buttons">
+                  <label class="btn btn-info active">
+                    <input type="checkbox" autocomplete="off">
+                    <i class="fa fa-check"></i>
+                  </label>
+                </li>
+                <li>Today's Totals</li>
+                <li class="btn-group btn-group-xs" data-toggle="buttons">
+                  <label class="btn btn-danger active">
+                    <input type="checkbox" autocomplete="off">
+                    <i class="fa fa-check"></i>
+                  </label>
+                </li>
+                <li>Yesterday's Totals</li>
+              </ul>
+            </div>
           </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-12">
-          <div class="panel">
-            <div class="panel-heading">
+            <div class="panel">
+              <div class="panel-heading">
               <ul class="list-inline pull-right">
-                <li><i class="fa fa-question-circle fa-2x fa-fw text-muted"></i></li>
-                <li><i class="fa fa-cog fa-2x fa-fw text-muted"></i></li>
-                <li><i class="fa fa-arrows fa-2x fa-fw text-muted" aria-hidden="true"></i></li>
+                <li><a href="#"><i class="fa fa-question-circle fa-2x fa-fw text-muted"></i></a></li>
+                <li><a href="#"><i class="fa fa-cog fa-2x fa-fw text-muted"></i></a></li>
+                <li><a href="#"><i class="fa fa-arrows fa-2x fa-fw text-muted" aria-hidden="true"></i></a></li>
               </ul>
               <h3 class="panel-title">Custom Alerts</h3>
               <a href="#">Create Report</a>
             </div>
-            <div class="panel-body">
-              <div class="alert alert-dismissible" role="alert">
-              <div class="panel panel-info">
-                <div class="panel-heading" >Panel title info<a class="btn-info pull-right fa fa-close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></a></div>
-                <div class="panel-body">
-                  Message with <a class="alert-info" href="#" >actionable link.</a>
+              <div class="panel-group">
+                  <div class="alert alert-dismissible" role="alert">
+                    <div class="panel panel-info">
+                      <div class="panel-heading" >Panel title info<a class="btn-info pull-right fa fa-close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></a></div>
+                      <div class="panel-body">
+                        Message with <a class="alert-info" href="#" >actionable link.</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="alert alert-dismissible" role="alert">
+                    <div class="panel panel-danger">
+                      <div class="panel-heading">Panel title Danger<a class="btn-danger pull-right fa fa-close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></a></div>
+                      <div class="panel-body">
+                        Message with <a href="#" class="alert-danger">actionable link.</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="alert alert-dismissible" role="alert">
+                    <div class="panel panel-warning">
+                      <div class="panel-heading">Panel title Warning<a class="btn-warning pull-right fa fa-close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></a></div>
+                      <div class="panel-body">
+                        Message with <a href="#" class="alert-warning">actionable link.</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="alert alert-dismissible" role="alert">
+                    <div class="panel panel-success">
+                      <div class="panel-heading">Panel title Success<a class="btn-success pull-right fa fa-close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></a></div>
+                      <div class="panel-body">
+                        Your custom alert "Last Years Goal" has triggered. View the report at <a href="#" class="alert-success">this link.</a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-                </div>
-              <div class="alert alert-dismissible" role="alert">
-                <div class="panel panel-danger">
-                <div class="panel-heading">Panel title Danger<a class="btn-danger pull-right fa fa-close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></a></div>
-                <div class="panel-body">
-                  Message with <a href="#" class="alert-danger">actionable link.</a>
-                </div>
-              </div>
-              </div>
-              <div class="alert alert-dismissible" role="alert">
-                <div class="panel panel-warning">
-                <div class="panel-heading">Panel title Warning<a class="btn-warning pull-right fa fa-close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></a></div>
-                <div class="panel-body">
-                  Message with <a href="#" class="alert-warning">actionable link.</a>
-                </div>
-              </div>
-              </div>
-              <div class="alert alert-dismissible" role="alert">
-                <div class="panel panel-success">
-                <div class="panel-heading">Panel title Success<a class="btn-success pull-right fa fa-close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></a></div>
-                <div class="panel-body">
-                  Your custom alert "Last Years Goal" has triggered. View the report at <a href="#" class="alert-success">this link.</a>
-                </div>
-              </div>
-              </div>
             </div>
           </div>
-        </div>
       </div>
 
       <!--Second Row -->
@@ -226,44 +254,126 @@
           <div class="panel">
             <div class="panel-heading">
               <ul class="list-inline pull-right">
-                <li><i class="fa fa-question-circle fa-2x fa-fw text-muted"></i></li>
-                <li><i class="fa fa-cog fa-2x fa-fw text-muted"></i></li>
-                <li><i class="fa fa-arrows fa-2x fa-fw text-muted" aria-hidden="true"></i></li>
+                <li><a href="#"><i class="fa fa-question-circle fa-2x fa-fw text-muted"></i></a></li>
+                <li><a href="#"><i class="fa fa-cog fa-2x fa-fw text-muted"></i></a></li>
+                <li><a href="#"><i class="fa fa-arrows fa-2x fa-fw text-muted" aria-hidden="true"></i></a></li>
               </ul>
               <h3 class="panel-title">CC Transactions</h3>
               <a href="#">Create Report</a>
+                <div id="donutid"> </div>
             </div>
-              <div id="donutid">
-              </div>
+            <div class="panel-footer">
+              <ul class="list-inline text-center">
+                <li class="btn-group btn-group-xs" data-toggle="buttons">
+                  <label class="btn btn-success active">
+                    <input type="checkbox" autocomplete="off">
+                    <i class="fa fa-check"></i>
+                  </label>
+                </li>
+                <li>Authorizations</li>
+                <li class="btn-group btn-group-xs" data-toggle="buttons">
+                  <label class="btn btn-warning active">
+                    <input type="checkbox" autocomplete="off">
+                    <i class="fa fa-check"></i>
+                  </label>
+                </li>
+                <li>Chargebacks</li>
+                <li class="btn-group btn-group-xs" data-toggle="buttons">
+                  <label class="btn btn-danger active">
+                    <input type="checkbox" autocomplete="off">
+                    <i class="fa fa-check"></i>
+                  </label>
+                </li>
+                <li>Declines</li>
+              </ul>
+            </div>
           </div>
         </div>
         <div class="col-lg-8 col-md-6 col-sm-12 ">
           <div class="panel">
             <div class="panel-heading">
-              <ul class="list-inline pull-right">
-                <li><a href="#"><i class="fa fa-question-circle fa-2x fa-fw text-muted"></i></a></li>
-                <li><i class="fa fa-cog fa-2x fa-fw text-muted"></i></li>
-                <li><i class="fa fa-arrows fa-2x fa-fw text-muted" aria-hidden="true"></i></li>
+              <ul class="list-inline text-center">
+                <li class="pull-left">
+                  <ul class="list-unstyled">
+                    <li class="pull-left"><h3 class="panel-title">Year Over Year Metrics</h3></li>
+                    <li class="text-left"><a href="#">Create Report</a></li>
+                  </ul>
+                </li>
+                <li class="btn-group btn-group-sm">
+                  <button type="button" class="btn btn-info">Current Year</button>
+                  <button type="button" class="btn btn-info dropdown-toggle text-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                  </ul>
+                </li>
+                <li class="btn-group btn-group-sm">
+                  <button type="button" class="btn btn-info">Transactions</button>
+                  <button type="button" class="btn btn-info dropdown-toggle text-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                  </ul>
+                </li>
+                <li class="pull-right"><a href="#"><i class="fa fa-arrows fa-2x fa-fw text-muted" aria-hidden="true"></i></a></li>
+                <li class="pull-right"><a href="#"><i class="fa fa-cog fa-2x fa-fw text-muted"></i></a></li>
+                <li class="pull-right"><a href="#"><i class="fa fa-question-circle fa-2x fa-fw text-muted"></i></a></li>
               </ul>
-              <h3 class="panel-title">Year Over Year Metrics</h3>
-              <a href="#">Create Report</a>
             </div>
-            <img src="http://placehold.it/800x200" class="img-responsive">
+            <div class="panel-body"><img src="http://placehold.it/800x200" class="img-responsive"></div>
+            <div class="panel-footer">
+              <ul class="list-inline text-center">
+                <li class="btn-group btn-group-xs" data-toggle="buttons">
+                  <label class="btn btn-info active">
+                    <input type="checkbox" autocomplete="off">
+                    <i class="fa fa-check"></i>
+                  </label>
+                </li>
+                <li>Current Year</li>
+                <li class="btn-group btn-group-xs" data-toggle="buttons">
+                  <label class="btn btn-primary active">
+                    <input type="checkbox" autocomplete="off">
+                    <i class="fa fa-check"></i>
+                  </label>
+                </li>
+                <li>Last Year</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
       <!-- /#page-content-wrapper -->
     </div>
     <!-- /#wrapper -->
+    <div class="flex-row row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="panel">
+        <div class="btn btn-link btn-lg btn-block">
+          <i class="fa fa-plus-circle"></i>&nbsp; Add Widget
+        </div>
+          </div>
+      </div>
+    </div>
+    <footer></footer>
 
     <!-- scripts-->
     <script src="jspm_packages/system.js"></script>
     <script src="config.js"></script>
-    
     <script src="//d3js.org/d3.v3.min.js"></script>
     <script src="charts/donut/donut.js"></script>
     <script src="charts/tip.js"></script>
-
     <script>
        System.import('scripts/startup');
        drawDonut();
@@ -273,5 +383,6 @@
            <script src="build.js"></script> -->
 
 </body>
+
 
 </html>

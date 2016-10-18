@@ -7,13 +7,14 @@ $font-family-base: Foundry Context;
 // Import bootstrap and fontawesome
 @import "custom-variables";
 @import "../../jspm_packages/github/twbs/bootstrap-sass@3.3.7/assets/stylesheets/bootstrap";
-//@import "../../jspm_packages/npm/font-awesome@4.6.3/scss/font-awesome";
+@import "../../jspm_packages/npm/font-awesome@4.6.3/scss/font-awesome";
 @import "sidebar";
 @import "chart";
 
+
 /** Navigation bar across the top of the page **/
 
-//Bootstrap navbar-brand class
+//*navbar-brand*//
 //
 //This is where the logo is contained in the upper left corner
 //of the navbar.
@@ -23,7 +24,7 @@ $font-family-base: Foundry Context;
   height: inherit;
 }
 
-//Bootstrap's navbar-default and navbar-nav classes
+//*navbar-default and navbar-nav//
 //
 //These are the navigation links on the right side
 //of the navbar (Back to iQ, Logout)
@@ -38,7 +39,8 @@ $font-family-base: Foundry Context;
   color: $gray-dark;
 }
 
-//Bootstrap's navbar-default class
+
+//*navbar-default*//
 //
 //This is the class that controls the styling of the navigation bar
 //across the top of the page (where the logo and navigation links
@@ -66,7 +68,8 @@ $font-family-base: Foundry Context;
   padding-right: 36px;
 }
 
-//Bootstrap's panel class
+//** Panels **//
+
 .panel { //!!!!!!!need to clean up and make modular later!!!!
   margin: 20px 0 0 10px;
   border-radius: 2px;
@@ -75,9 +78,8 @@ $font-family-base: Foundry Context;
  a{
   font-size: 12px;
 }
-.panel-footer {
-  color: $brand-primary;
-}
+
+//** Panel Footer **//
 
 //Use for panel footer background brand colors success and danger
 .success{
@@ -92,6 +94,21 @@ $font-family-base: Foundry Context;
 
 .alert {
   margin-bottom: 0px;
+}
+
+
+// Checkboxes in the panel footers
+// using bootstrap btn class and font awesome check
+// icon. Icon will appear when button is active,
+// and disappear when it is not.
+.panel-footer .btn > i.fa {
+    opacity: 0;
+
+}
+
+.panel-footer .btn.active > i.fa {
+    opacity: 1;
+
 }
 
 
@@ -112,10 +129,17 @@ $font-family-base: Foundry Context;
 
     .flex-row .thumbnail,
 .flex-row .caption,
-.flex-row .panel {
+.flex-row .panel{
     display: flex;
     flex: 1 0 auto;
     flex-direction: column;
+
+}
+.flex-row .panel-group{
+  overflow-y: auto;
+}
+.flex-row .panel-body{
+  overflow-y: auto;
 }
 .flex-text {
     flex-grow: 1;
