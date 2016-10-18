@@ -172,8 +172,6 @@ function drawSmoothLine(){
 
       if (newData == "yearly.tsv"){
         
-        console.log('yearly');
-        
         //plot yearly
         d3.tsv("charts/smoothline/lineyearly.tsv", function(error, data) {
           if (error) throw error;

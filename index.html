@@ -269,21 +269,21 @@
             <div class="panel-footer">
               <ul class="list-inline text-center">
                 <li class="btn-group btn-group-xs" data-toggle="buttons">
-                  <label class="btn btn-success active">
+                  <label class="btn btn-success active" id="auth" onclick="drawDonut()">
                     <input type="checkbox" autocomplete="off">
                     <i class="fa fa-check"></i>
                   </label>
                 </li>
                 <li>Authorizations</li>
                 <li class="btn-group btn-group-xs" data-toggle="buttons">
-                  <label class="btn btn-warning active">
+                  <label class="btn btn-warning active" id="chargeback" onclick="drawDonut()">
                     <input type="checkbox" autocomplete="off">
                     <i class="fa fa-check"></i>
                   </label>
                 </li>
                 <li>Chargebacks</li>
                 <li class="btn-group btn-group-xs" data-toggle="buttons">
-                  <label class="btn btn-danger active">
+                  <label class="btn btn-danger active" id="decline" onclick="drawDonut()">
                     <input type="checkbox" autocomplete="off">
                     <i class="fa fa-check"></i>
                   </label>
@@ -383,9 +383,10 @@
     <script src="charts/donut/donut.js"></script>
     <script src="charts/smoothline/smoothline.js"> </script>
     <script src="charts/tip.js"></script>
+    <script src="charts/toggle.js"></script>
     <script>
        System.import('scripts/startup');
-       drawDonut();
+       drawDonutInitial();
        drawSmoothLine();
       </script>
     <!-- Uncomment this for production version
