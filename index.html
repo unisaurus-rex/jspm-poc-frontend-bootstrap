@@ -260,8 +260,12 @@
               </ul>
               <h3 class="panel-title">CC Transactions</h3>
               <a href="#">Create Report</a>
-                <div id="donutid"> </div>
-            </div>
+              </div>
+              
+                
+                <div class="panel-body">
+                  <div id="donutid"> </div>
+              </div>
             <div class="panel-footer">
               <ul class="list-inline text-center">
                 <li class="btn-group btn-group-xs" data-toggle="buttons">
@@ -332,7 +336,11 @@
                 <li class="pull-right"><a href="#"><i class="fa fa-question-circle fa-2x fa-fw text-muted"></i></a></li>
               </ul>
             </div>
-            <div class="panel-body"><img src="http://placehold.it/800x200" class="img-responsive"></div>
+            <div class="panel-body">
+              <div class="chartwrapper">
+                <div id="chartsmoothlineid"> </div>
+              </div>
+            </div>
             <div class="panel-footer">
               <ul class="list-inline text-center">
                 <li class="btn-group btn-group-xs" data-toggle="buttons">
@@ -373,10 +381,12 @@
     <script src="config.js"></script>
     <script src="//d3js.org/d3.v3.min.js"></script>
     <script src="charts/donut/donut.js"></script>
+    <script src="charts/smoothline/smoothline.js"> </script>
     <script src="charts/tip.js"></script>
     <script>
        System.import('scripts/startup');
        drawDonut();
+       drawSmoothLine();
       </script>
     <!-- Uncomment this for production version
            Remove the other script tags

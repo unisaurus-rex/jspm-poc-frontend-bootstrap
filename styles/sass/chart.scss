@@ -55,3 +55,39 @@ svg.svg-content-responsive-pie{
   height: $donut-width;
   padding: 2%;
 }
+
+/* smooth line graph*/
+#chartsmoothlineid .area{
+  fill-opacity: 0.8;
+}
+.padding{
+  padding: 2% 2% 5% 7%;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: $light-grey;
+  opacity: 0.1;
+  shape-rendering: crispEdges;
+}
+
+
+
+/*.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: auto;
+}*/
+
+.svg-container {
+  width: 100%;
+  max-width: 1250px;
+  vertical-align: top;
+  overflow: hidden;
+}
+
+g.x.axis, g.y.axis{
+  font-size: 6px;
+  fill: $light-grey;
+}
