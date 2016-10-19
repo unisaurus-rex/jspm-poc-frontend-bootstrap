@@ -8103,12 +8103,14 @@ a.list-group-item {
   padding-right: 36px; }
 
 .panel {
-  margin: 20px 0 0 10px;
+  margin: 20px 10px 0 10px;
   border-radius: 2px;
   max-height: 600px;
   font-size: 13px; }
   .panel a {
     font-size: 12px; }
+  .panel .panel-body {
+    height: 100%; }
   .panel .success {
     background-color: rgba(64, 193, 172, 0.15); }
   .panel .danger {

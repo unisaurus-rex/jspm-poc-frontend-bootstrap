@@ -70,12 +70,19 @@ $font-family-base: Foundry Context;
 //** Panels **//
 
 .panel { //!!!!!!!need to clean up and make modular later!!!!
-  margin: 20px 0 0 10px;
+  margin: 20px 10px 0 10px;
   border-radius: 2px;
   max-height: 600px;
   font-size: 13px;
  a{
   font-size: 12px;
+}
+
+//** Panel Body **//
+// Add height to 100% to keep the panel footer
+// fixed at the bottom.
+.panel-body {
+  height: 100%;
 }
 
 //** Panel Footer **//
