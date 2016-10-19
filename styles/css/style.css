@@ -8122,6 +8122,9 @@ a.list-group-item {
 .mapTooltip tr:nth-child(even) {
   background-color: lightgray; }
 
+#mapContainer {
+  min-height: 90%; }
+
 /** Navigation bar across the top of the page **/
 .navbar-brand {
   height: inherit; }

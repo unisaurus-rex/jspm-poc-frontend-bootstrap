@@ -76,66 +76,45 @@
           <div class="col-lg-9 col-md-9 col-sm-12 ">
             <div class="panel">
               <div class="panel-heading">
-                <ul class="list-inline text-center">
-                <li class="pull-left">
-                <ul class="list-unstyled">
-                <li class="pull-left"><h3 class="panel-title">Portfolio Trends</h3></li>
-                <li class="text-left"><a href="#">Create Report</a></li>
-                    </ul>
-                  </li>
-                <li class="btn-group btn-group-sm">
-                <button type="button" class="btn btn-info">Current Year</button>
-                <button type="button" class="btn btn-info dropdown-toggle text-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="caret"></span>
-                <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-                    </ul>
-                  </li>
-                <li class="btn-group btn-group-sm">
-                <button type="button" class="btn btn-info">Transactions</button>
-                <button type="button" class="btn btn-info dropdown-toggle text-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="caret"></span>
-                <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-                    </ul>
-                  </li>
-                <li class="pull-right"><a href="#"><i class="fa fa-arrows fa-2x fa-fw text-muted" aria-hidden="true"></i></a></li>
-                <li class="pull-right"><a href="#"><i class="fa fa-cog fa-2x fa-fw text-muted"></i></a></li>
-                <li class="pull-right"><a href="#"><i class="fa fa-question-circle fa-2x fa-fw text-muted"></i></a></li>
+                <ul class="list-inline pull-right">
+                  <li><a href="#"><i class="fa fa-question-circle fa-2x fa-fw text-muted"></i></a></li>
+                  <li><a href="#"><i class="fa fa-cog fa-2x fa-fw text-muted"></i></a></li>
+                  <li><a href="#"><i class="fa fa-arrows fa-2x fa-fw text-muted" aria-hidden="true"></i></a></li>
                 </ul>
-                <!-- Split button -->
+                <h3 class="panel-title">Sales By Region</h3>
+                <p>July - September, 2016</p>
               </div>
-              <div class="panel-body mapPanel">
-                <div id="mapContainer"></div>
+              <div class="panel-body">
+                <div id="mapParent">
+                  <div id="mapContainer"></div>
+                </div>
               </div>
               <div class="panel-footer">
-                <ul class="list-inline text-center">
-                <li class="btn-group btn-group-xs" data-toggle="buttons">
-                <label class="btn btn-info active">
-                <input type="checkbox" autocomplete="off">
-                <i class="fa fa-check"></i>
+                <ul id="countyBoxes" class="list-inline text-center">
+                  <li>
+                    <h6>Sales By Group</h6>
+                  </li>
+                  <li class="btn-group btn-group-xs" data-toggle="buttons">
+                    <label class="btn btn-default ">
+                      <input type="checkbox" value="18-34" name="countyRange">
+                      <i class="fa fa-check"></i>
                     </label>
                   </li>
-                <li>Today's Totals</li>
-                <li class="btn-group btn-group-xs" data-toggle="buttons">
-                <label class="btn btn-danger active">
-                <input type="checkbox" autocomplete="off">
-                <i class="fa fa-check"></i>
+                  <li>18-34</li>
+                  <li class="btn-group  btn-group-xs" data-toggle="buttons">
+                    <label class="btn btn-default ">
+                      <input type="checkbox" value="35-54" name="countyRange">
+                      <i class="fa fa-check"></i>
                     </label>
                   </li>
-                <li>Yesterday's Totals</li>
+                  <li>35-54</li>
+                  <li class="btn-group btn-group-xs" data-toggle="buttons">
+                    <label class="btn btn-default ">
+                      <input type="checkbox" value="55+" name="countyRange">
+                      <i class="fa fa-check"></i>
+                    </label>
+                  </li>
+                  <li>55+</li>
                 </ul>
               </div>
             </div>
@@ -188,6 +167,7 @@
             </div>
           </div>
         </div>
+
 
         <!--Second Row -->
         <div class="flex-row row">

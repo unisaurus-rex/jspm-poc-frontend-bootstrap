@@ -47,3 +47,7 @@
 .mapTooltip tr:nth-child(even) {
   background-color: lightgray;
 }
+
+#mapContainer {
+  min-height: 90%;
+}

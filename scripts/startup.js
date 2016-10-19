@@ -5,9 +5,14 @@ import {createCountyWidget} from 'county-widget/countyWidget';
 
 addToggle(); 
 
-var mapCenter = [39.7, -104.99];
-var initialMapZoom = 7;
-var map1 = initMap("div.mapPanel", "mapContainer", mapCenter, initialMapZoom);
+// config object for map
+var map1Config = {
+  parentSelector: "#mapParent",
+  mapContainerId: "mapContainer", 
+  mapCenter: [39.7, -104.99],
+  initialZoom: 7
+};
+var map1 = initMap(map1Config);
 
 var salesData = {
   keys: ["18-34", "35-54", "55+"],
@@ -31,6 +36,6 @@ var countyConfig = {
   tooltipClass: "mapTooltip"
 };
 
-createCountyWidget(countyConfig);
+createCountyWidget(countyConfig, "#countyBoxes input");
 
 

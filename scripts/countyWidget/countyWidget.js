@@ -1,19 +1,24 @@
 import {initCountyMap, styleCountyBySales} from 'county-widget/countyMap';
 
-export function createCountyWidget(config){
-  initCountyMap(config);
+// draw a county map and add dynamic styles to the county regions
+// countyConfig: config object for initCountyMap
+// inputGroupSelector: css selector string to select all checkboxes that affect styles
+// selector string should end with 'input'
+export function createCountyWidget(countyConfig, inputGroupSelector){
+  initCountyMap(countyConfig);
 
   // on checkbox click update the color style for each region
-  $("input[name=demographics]").on("click", function(){
-    var selectedDemographics = getCheckedValues("demographics");
-    styleCountyBySales(selectedDemographics);
+  $(inputGroupSelector).change(function(){
+    var checkedSelector = inputGroupSelector + ":checked";
+    var selectedRanges = getCheckedValues(checkedSelector);
+    styleCountyBySales(selectedRanges);
   });
 
 }
 
 // get checked values as an array
-function getCheckedValues(checkboxName){
-  var selector = "input[name=" + checkboxName + "]:checked";
+// selector: css selector that will return an input element that is checked
+function getCheckedValues(selector){
   // calling .get() on a jquery object returns a plain array of elements
   return $(selector).get().map(function(el){return el.value;});
 }
