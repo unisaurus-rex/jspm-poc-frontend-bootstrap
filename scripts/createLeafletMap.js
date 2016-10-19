@@ -1,22 +1,27 @@
 import $ from 'jquery';
 // don't need to import leaflet because it's included as a cdn in index.html
 
-// parentSelector: css selector for parent of map container
-// mapContainerId: id of map container
-export default function(parentSelector, mapContainerId, mapCenter, initialZoom) {
+/*
+config object:
+parentSelector: css selector for parent of map container
+mapContainerId: id of map container
+mapCenter: array of 2 floats representing the longitude and latitude of leaflet map center
+initialZoom: int, starting zoom level of map 
+*/
+export default function(config) {
   // initialize map container height
-  setContainerHeight(parentSelector);
+  setContainerHeight(config.parentSelector);
   
   // change the height of the container on resize
   $(window).resize(function(e){
-    setContainerHeight(parentSelector);
+    setContainerHeight(config.parentSelector);
   });
   
   // L = Leaflet.js object
-  var map = L.map(mapContainerId);
+  var map = L.map(config.mapContainerId);
 
   map.options.minZoom = 4;
-  map.setView(mapCenter, initialZoom);
+  map.setView(config.mapCenter, config.initialZoom);
 
   // add tile layer to map
   L.tileLayer( 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
