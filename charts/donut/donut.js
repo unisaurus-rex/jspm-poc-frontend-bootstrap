@@ -1,3 +1,4 @@
+//draw donut
 function drawDonut(){
   //clear current chart
   var svgclear = d3.select("div#donutid");
