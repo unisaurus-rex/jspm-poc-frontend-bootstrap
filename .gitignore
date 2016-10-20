@@ -3,3 +3,4 @@ jspm_packages/**/*
 build/**/*
 styles/css/*.css
 .live-server.json
+/styles/css/maps.css.map
