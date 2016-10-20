@@ -15,7 +15,7 @@
 }
 
 .avgSales {
-  fill: $brand-info;
+  fill: $brand-warning;
 }
 
 .highSales {
@@ -27,13 +27,13 @@
 }
 
 .mapTooltip {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    padding: 10px;
-    background-color: whitesmoke;
-    border-radius: 10px;
-    pointer-events: none;
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  padding: 10px;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  pointer-events: none;
 }
 
 .hidden {
@@ -50,4 +50,19 @@
 
 #mapContainer {
   min-height: 90%;
+}
+
+.legendLowSales {
+  height: 10px;
+  background-color: $brand-danger;
+}
+
+.legendAvgSales {
+  height: 10px;
+  background-color: $brand-warning;
+}
+
+.legendHighSales {
+  height: 10px;
+  background-color: $brand-success;
 }

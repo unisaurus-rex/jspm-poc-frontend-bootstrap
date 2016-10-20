@@ -8096,7 +8096,7 @@ a.list-group-item {
   fill: #FD0000; }
 
 .avgSales {
-  fill: #00A9E0; }
+  fill: #FED100; }
 
 .highSales {
   fill: #40C1AC; }
@@ -8124,6 +8124,18 @@ a.list-group-item {
 
 #mapContainer {
   min-height: 90%; }
+
+.legendLowSales {
+  height: 10px;
+  background-color: #FD0000; }
+
+.legendAvgSales {
+  height: 10px;
+  background-color: #FED100; }
+
+.legendHighSales {
+  height: 10px;
+  background-color: #40C1AC; }
 
 /** Navigation bar across the top of the page **/
 .navbar-brand {

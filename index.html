@@ -90,32 +90,42 @@
                 </div>
               </div>
               <div class="panel-footer">
-                <ul id="countyBoxes" class="list-inline text-center">
-                  <li>
-                    <h6>Sales By Group</h6>
-                  </li>
-                  <li class="btn-group btn-group-xs" data-toggle="buttons">
-                    <label class="btn btn-default ">
-                      <input type="checkbox" value="18-34" name="countyRange">
-                      <i class="fa fa-check"></i>
-                    </label>
-                  </li>
-                  <li>18-34</li>
-                  <li class="btn-group  btn-group-xs" data-toggle="buttons">
-                    <label class="btn btn-default ">
-                      <input type="checkbox" value="35-54" name="countyRange">
-                      <i class="fa fa-check"></i>
-                    </label>
-                  </li>
-                  <li>35-54</li>
-                  <li class="btn-group btn-group-xs" data-toggle="buttons">
-                    <label class="btn btn-default ">
-                      <input type="checkbox" value="55+" name="countyRange">
-                      <i class="fa fa-check"></i>
-                    </label>
-                  </li>
-                  <li>55+</li>
-                </ul>
+                <div class="pull-left">
+                  <strong>Filter By Group</strong>
+                  <ul id="countyBoxes" class="list-inline">
+                    <li class="btn-group btn-group-xs" data-toggle="buttons">
+                      <label class="btn btn-default ">
+                        <input type="checkbox" value="18-34" name="countyRange">
+                        <i class="fa fa-check"></i>
+                      </label>
+                    </li>
+                    <li>18-34</li>
+                    <li class="btn-group  btn-group-xs" data-toggle="buttons">
+                      <label class="btn btn-default ">
+                        <input type="checkbox" value="35-54" name="countyRange">
+                        <i class="fa fa-check"></i>
+                      </label>
+                    </li>
+                    <li>35-54</li>
+                    <li class="btn-group btn-group-xs" data-toggle="buttons">
+                      <label class="btn btn-default ">
+                        <input type="checkbox" value="55+" name="countyRange">
+                        <i class="fa fa-check"></i>
+                      </label>
+                    </li>
+                    <li>55+</li>
+                  </ul>
+                </div>
+                <div class="pull-right">
+                  <ul class="list-inline">
+                    <li class="legendBox legendLowSales"></li>
+                    <li>Below Average Sales</li>
+                    <li class="legendBox legendAvgSales"></li>
+                    <li>Average Sales</li>
+                    <li class="legendBox legendHighSales"></li>
+                    <li>Above Average Sales</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
