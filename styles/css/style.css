@@ -8124,7 +8124,8 @@ svg.svg-content-responsive-pie {
   margin: auto;
   width: 50%;
   height: 50%;
-  padding: 2%; }
+  padding: 2%;
+  overflow: visible; }
 
 /* smooth line graph*/
 #chartsmoothlineid .area {
@@ -8146,11 +8147,11 @@ svg.svg-content-responsive-pie {
   stroke: #000;
   shape-rendering: auto;
 }*/
-.svg-container {
+svg.svg-container {
   width: 100%;
   max-width: 1250px;
   vertical-align: top;
-  overflow: hidden; }
+  overflow: visible; }
 
 g.x.axis, g.y.axis {
   font-size: 6px;

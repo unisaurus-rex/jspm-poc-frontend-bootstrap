@@ -54,6 +54,7 @@ svg.svg-content-responsive-pie{
   width: $donut-width;
   height: $donut-width;
   padding: 2%;
+  overflow: visible;
 }
 
 /* smooth line graph*/
@@ -80,11 +81,11 @@ svg.svg-content-responsive-pie{
   shape-rendering: auto;
 }*/
 
-.svg-container {
+svg.svg-container {
   width: 100%;
   max-width: 1250px;
   vertical-align: top;
-  overflow: hidden;
+  overflow: visible;
 }
 
 g.x.axis, g.y.axis{
