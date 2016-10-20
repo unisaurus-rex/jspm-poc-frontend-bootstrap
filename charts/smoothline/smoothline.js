@@ -105,7 +105,7 @@ function drawSmoothLine(){
       var last = document.getElementById("last");
 
       //if checkmark is checked draw area
-      if(hasClass(curr, "active")){
+      if(hasClass(last, "active")){
           svgtwo.append("path")
           .datum(data)
           .attr("class", "area")
@@ -115,7 +115,7 @@ function drawSmoothLine(){
           ;          
       }
       //if checkmark is checked draw area
-      if(hasClass(last, "active")){
+      if(hasClass(curr, "active")){
         svgtwo.append("path")
           .datum(data)
           .attr("class", "area")
