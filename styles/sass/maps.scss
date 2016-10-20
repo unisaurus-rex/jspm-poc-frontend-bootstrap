@@ -11,15 +11,15 @@
 }
 
 .lowSales {
-  fill: red;
+  fill: $brand-danger;
 }
 
 .avgSales {
-  fill: blue;
+  fill: $brand-info;
 }
 
 .highSales {
-  fill: green;
+  fill: $brand-success;
 }
 
 .countypath:hover {

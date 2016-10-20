@@ -8093,13 +8093,13 @@ a.list-group-item {
   stroke-width: 1px; }
 
 .lowSales {
-  fill: red; }
+  fill: #FD0000; }
 
 .avgSales {
-  fill: blue; }
+  fill: #00A9E0; }
 
 .highSales {
-  fill: green; }
+  fill: #40C1AC; }
 
 .countypath:hover {
   fill-opacity: .3; }
