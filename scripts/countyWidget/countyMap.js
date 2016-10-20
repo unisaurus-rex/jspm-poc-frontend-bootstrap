@@ -43,9 +43,10 @@ export function initCountyMap(config){
           <table>
           <thead><tr><th>Group</th><th>Sales</th></tr></thead>
           <tbody>
-          <tr><td>18-34</td><td>$ ${d.sales[0]}</td></tr>
-          <tr><td>35-54</td><td>$ ${d.sales[1]}</td></tr>
-          <tr><td>55+</td><td>$ ${d.sales[2]}</td></tr>
+          <tr><td>College Student</td><td>$ ${d.sales[0]}</td></tr>
+          <tr><td>Outdoorsman</td><td>$ ${d.sales[1]}</td></tr>
+          <tr><td>New Home Buyer</td><td>$ ${d.sales[2]}</td></tr>
+          <tr><td>Total</td><td>$ ${(d.sales.reduce((a,b) => a+b, 0)).toFixed(2)}</td></tr>
           </tbody>
         </table>`
 

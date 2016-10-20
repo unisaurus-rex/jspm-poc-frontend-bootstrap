@@ -10,8 +10,8 @@ export function initTooltip(tooltipId, tooltipClass) {
 export function positionTooltip(tooltipId, tooltipCenter) {
   d3.select("#" + tooltipId)
     .classed('hidden', false)
-    .style('left', tooltipCenter[0] + "px")
-    .style('top', tooltipCenter[1] + "px");
+    .style('left', (tooltipCenter[0] + 320) + "px")
+    .style('top', (tooltipCenter[1] + 70) + "px");
 }
 
 export function hideTooltip(tooltipId){
