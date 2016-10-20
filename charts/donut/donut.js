@@ -1,46 +1,30 @@
-
-function hasClass(element, cls) {
-    return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
-}
-
 function drawDonut(){
+  //clear current chart
   var svgclear = d3.select("div#donutid");
   svgclear.selectAll("*").remove();
 
+  //select checkbox divs
   var auth = document.getElementById("auth");
   var chargeBack = document.getElementById("chargeback");
   var decline = document.getElementById("decline");
 
-   //set size
+   //set sizes
   console.log ();
   var width =  500,
       height =  500,
       radius = Math.min(width, height) / 2;
-
-      var innerrad = radius/3;
-
-  //set the colors
-  var color = d3.scale.ordinal()
-      .range(["#40c1ac", "#fd0000", "#ffa300", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
-
-  //set the tooltip
-  var tiptwo = d3.tip()
-    .attr('class', 'd3-tip')
-    .offset([0, 0])
-    .html(function(d) {
-      return "<strong>" + d.data.age +":</strong> <span>" + d.data.population  + "</span>";
-    })
-    
+  var innerrad = radius/3;
 
   //set size of outer arc
   var arc = d3.svg.arc()
       .outerRadius(radius)
       .innerRadius(radius - innerrad);
 
+  //pie config
   var pie = d3.layout.pie()
       .sort(null)
       .value(function(d) { return d.population; })
-      .padAngle(.03)
+      .padAngle(.05)
       ;
 
   //draw the pie 
@@ -64,6 +48,12 @@ function drawDonut(){
     .attr("fill", "white");*/
 
   //initialize tool tip
+  var tiptwo = d3.tip()
+    .attr('class', 'd3-tip')
+    .offset([0, 0])
+    .html(function(d) {
+      return "<strong>" + d.data.age +":</strong> <span>" + d.data.population  + "</span>";
+    })
   svg.call(tiptwo);
 
   //plot data
@@ -92,6 +82,7 @@ function drawDonut(){
         }
         
       })
+
   //sum for center text
   var sum =0;
     data.forEach(function(d) {
@@ -126,7 +117,6 @@ function drawDonut(){
   //plot the data and create the hover transitions
   g.append("path")
     .attr("d", arc)
-    
     .style("fill", function(d) { 
       if (d.data.age == "Authorizations")
         return "#40c1ac";
@@ -135,28 +125,11 @@ function drawDonut(){
       if (d.data.age == "Chargebacks")
         return "#ffa300";
       })
-
-    /*.filter(function(d){  
-      console.log("filter called", d.data.age);
-        if(d.data.age == "Authorizations"){
-          if (hasClass(auth, "active")){
-            console.log("return true");
-            return true;
-          }
-        }
-        else{
-          console.log("return false");
-          return false;
-        }
-        
-      }
-  )*/
     .on("mouseover", function(d) {
       d3.select(this).transition()
         .duration(1000)
         .attr("d", arcOver);
     })
-
     .on("mouseout", function(d) {
       d3.select(this).transition()
         .duration(1000)
