@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Insights Dashboard</title>
+
+    <!-- Bootstrap Core CSS -->
+
+
+    <!-- Custom CSS -->
+    <link href="https://unpkg.com/leaflet@0.7.7/dist/leaflet.css" rel="stylesheet"/>
+    <link href="styles/css/style.css" rel="stylesheet">
+
+    <!--&lt;!&ndash; HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries &ndash;&gt;-->
+    <!--&lt;!&ndash; WARNING: Respond.js doesn't work if you view the page via file:// &ndash;&gt;-->
+    <!--&lt;!&ndash;[if lt IE 9]>-->
+    <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>-->
+    <!--<![endif]&ndash;&gt;-->
+
+  </head>
+
+  <body>
+
+    <div id="wrapper">
+
+      <!-- Sidebar -->
+      <div id="sidebar-wrapper">
+        <h3 class="page-header">Unistar Credit Union<br><br><small>123456-789011-1213145 FI#</small></h3>
+        <div class="list-group">
+          <a class="list-group-item list-group-item-action" href="#"><i class="fa fa-tachometer fa-fw"></i>&nbsp;&nbsp; Dashboard</a>
+          <a class="list-group-item list-group-item-action" href="#"><i class="fa fa-file-text-o fa-fw"></i>&nbsp;&nbsp; Custom Reporting</a>
+          <a class="list-group-item list-group-item-action" href="#"><i class="fa fa-users fa-fw"></i>&nbsp;&nbsp; Shopper Insights</a>
+          <a class="list-group-item list-group-item-action" href="#"><i class="fa fa-cog fa-fw"></i>&nbsp;&nbsp; Settings</a>
+          <a class="list-group-item list-group-item-action" href="#"><i class="fa fa-suitcase fa-fw"></i>&nbsp;&nbsp; Support</a>
+          <a class="list-group-item list-group-item-action" href="#"><i class="fa fa-reply fa-fw"></i>&nbsp;&nbsp; Back to iQ</a>
+          <a class="list-group-item list-group-item-action" href="#"><i class="fa fa-sign-out fa-fw"></i>&nbsp;&nbsp; Logout</a>
+        </div>
+      </div>
+      <!-- /#sidebar-wrapper -->
+
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+        <nav class="navbar-default">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                      aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <img class="navbar-brand" src="img/vantiv%20logo%20gray.jpg">
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+              <ul class="nav navbar-nav navbar-right">
+                <!-- <li><a href="#menu-toggle" class="" id="menu-toggle">Toggle Menu</a></li> -->
+                <li><a href="#">Back to iQ &nbsp;<i class="fa fa-reply" aria-hidden="true"></i></a></li>
+                <li><a href="#">Logout &nbsp;<i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+        <!-- row that contains two columns: 8 and 4 -->
+        <div class="flex-row row">
+          <div class="col-lg-9 col-md-9 col-sm-12 ">
+            <div class="panel">
+              <div class="panel-heading">
+                <ul class="list-inline pull-right">
+                  <li><a href="#"><i class="fa fa-question-circle fa-2x fa-fw text-muted"></i></a></li>
+                  <li><a href="#"><i class="fa fa-cog fa-2x fa-fw text-muted"></i></a></li>
+                  <li><a href="#"><i class="fa fa-arrows fa-2x fa-fw text-muted" aria-hidden="true"></i></a></li>
+                </ul>
+                <h3 class="panel-title">Sales By Region</h3>
+                <p>July - September, 2016</p>
+                <div class="pull-right">
+                  <ul class="list-inline">
+                    <li class="legendBox legendLowSales"></li>
+                    <li>Below Projections</li>
+                    <li class="legendBox legendAvgSales"></li>
+                    <li>At Projections</li>
+                    <li class="legendBox legendHighSales"></li>
+                    <li>Above Projections</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="panel-body">
+                <div id="mapParent">
+                  <div id="mapContainer"></div>
+                </div>
+              </div>
+              <div class="panel-footer">
+                <div class="pull-left">
+                  <strong>Filter By Profile</strong>
+                  <ul id="countyBoxes" class="list-inline">
+                    <li class="btn-group btn-group-xs" data-toggle="buttons">
+                      <label class="btn btn-default ">
+                        <input type="checkbox" value="18-34" name="countyRange">
+                        <i class="fa fa-check"></i>
+                      </label>
+                    </li>
+                    <li>College Student</li>
+                    <li class="btn-group  btn-group-xs" data-toggle="buttons">
+                      <label class="btn btn-default ">
+                        <input type="checkbox" value="35-54" name="countyRange">
+                        <i class="fa fa-check"></i>
+                      </label>
+                    </li>
+                    <li>Outdoorsman</li>
+                    <li class="btn-group btn-group-xs" data-toggle="buttons">
+                      <label class="btn btn-default ">
+                        <input type="checkbox" value="55+" name="countyRange">
+                        <i class="fa fa-check"></i>
+                      </label>
+                    </li>
+                    <li>New Home Buyer</li>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-12">
+            <div class="panel">
+              <div class="panel-heading">
+                <ul class="list-inline pull-right">
+                  <li><a href="#"><i class="fa fa-question-circle fa-2x fa-fw text-muted"></i></a></li>
+                  <li><a href="#"><i class="fa fa-cog fa-2x fa-fw text-muted"></i></a></li>
+                  <li><a href="#"><i class="fa fa-arrows fa-2x fa-fw text-muted" aria-hidden="true"></i></a></li>
+                </ul>
+                <h3 class="panel-title">Custom Alerts</h3>
+                <a href="#">Create Report</a>
+              </div>
+              <div class="panel-group">
+                <div class="alert alert-dismissible" role="alert">
+                  <div class="panel panel-info">
+                    <div class="panel-heading" >Panel title info<a class="btn-info pull-right fa fa-close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></a></div>
+                    <div class="panel-body">
+                      Message with <a class="alert-info" href="#" >actionable link.</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="alert alert-dismissible" role="alert">
+                  <div class="panel panel-danger">
+                    <div class="panel-heading">Panel title Danger<a class="btn-danger pull-right fa fa-close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></a></div>
+                    <div class="panel-body">
+                      Message with <a href="#" class="alert-danger">actionable link.</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="alert alert-dismissible" role="alert">
+                  <div class="panel panel-warning">
+                    <div class="panel-heading">Panel title Warning<a class="btn-warning pull-right fa fa-close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></a></div>
+                    <div class="panel-body">
+                      Message with <a href="#" class="alert-warning">actionable link.</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="alert alert-dismissible" role="alert">
+                  <div class="panel panel-success">
+                    <div class="panel-heading">Panel title Success<a class="btn-success pull-right fa fa-close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></a></div>
+                    <div class="panel-body">
+                      Your custom alert "Last Years Goal" has triggered. View the report at <a href="#" class="alert-success">this link.</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!--Second Row -->
+        <div class="flex-row row">
+          <div class="col-lg-3 col-md-3 col-sm-6">
+            <div class="panel panel-success">
+              <div class="panel-body">
+                <h2 class="text-center">
+                  26</h2>
+                <p class="text-center alert-success">AVG. CARD USAGE</p>
+              </div>
+              <div class="panel-footer success">
+                <ul class="list-inline text-center">
+                  <li><i class="fa fa-play-circle fa-lg fa-rotate-270 alert-success" aria-hidden="true"></i></li>
+                  <li>13% INCREASE</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-6">
+            <div class="panel panel-success">
+              <div class="panel-body">
+                <h2 class="text-center">$95K</h2>
+                <p class="text-center alert-success">INTERCHANGE</p>
+              </div>
+              <div class="panel-footer success">
+                <ul class="list-inline text-center">
+                  <li><i class="fa fa-play-circle fa-lg fa-rotate-270 alert-success fa-fw" aria-hidden="true"></i></li>
+                  <li>4% INCREASE</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-6">
+            <div class="panel panel-warning">
+              <div class="panel-body">
+                <h2 class="text-center">19</h2>
+                <p class="text-center alert-danger">FRAUD BPS</p>
+              </div>
+              <div class="panel-footer danger">
+                <ul class="list-inline text-center">
+                  <li><i class="fa fa-play-circle fa-lg fa-rotate-90 alert-danger" aria-hidden="true"></i></li>
+                  <li>21% DECREASE</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-6">
+            <div class="panel panel-danger">
+              <div class="panel-body">
+                <h2 class="text-center">$25.32</h2>
+                <p class="text-center alert-danger">AVG. TRANSACTION</p>
+              </div>
+              <div class="panel-footer danger">
+                <ul class="list-inline text-center">
+                  <li><i class="fa fa-play-circle fa-lg fa-rotate-90 alert-danger" aria-hidden="true"></i></li>
+                  <li>5% DECREASE</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--Third Row -->
+        <div class="flex-row row">
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="panel">
+              <div class="panel-heading">
+                <ul class="list-inline pull-right">
+                  <li><a href="#"><i class="fa fa-question-circle fa-2x fa-fw text-muted"></i></a></li>
+                  <li><a href="#"><i class="fa fa-cog fa-2x fa-fw text-muted"></i></a></li>
+                  <li><a href="#"><i class="fa fa-arrows fa-2x fa-fw text-muted" aria-hidden="true"></i></a></li>
+                </ul>
+                <h3 class="panel-title">CC Transactions</h3>
+                <a href="#">Create Report</a>
+              </div>
+
+
+              <div class="panel-body">
+                <div id="donutid"> </div>
+              </div>
+              <div class="panel-footer">
+                <ul class="list-inline text-center">
+                  <li class="btn-group btn-group-xs" data-toggle="buttons">
+                    <label class="btn btn-success active" id="auth" onclick="drawDonut()">
+                      <input type="checkbox" autocomplete="off">
+                      <i class="fa fa-check"></i>
+                    </label>
+                  </li>
+                  <li>Authorizations</li>
+                  <li class="btn-group btn-group-xs" data-toggle="buttons">
+                    <label class="btn btn-warning active" id="chargeback" onclick="drawDonut()">
+                      <input type="checkbox" autocomplete="off">
+                      <i class="fa fa-check"></i>
+                    </label>
+                  </li>
+                  <li>Chargebacks</li>
+                  <li class="btn-group btn-group-xs" data-toggle="buttons">
+                    <label class="btn btn-danger active" id="decline" onclick="drawDonut()">
+                      <input type="checkbox" autocomplete="off">
+                      <i class="fa fa-check"></i>
+                    </label>
+                  </li>
+                  <li>Declines</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- /#page-content-wrapper -->
+        </div>
+        <!-- /#wrapper -->
+        <div class="flex-row row">
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="panel">
+              <div class="panel-heading">
+                <ul class="list-inline text-center">
+                  <li class="pull-left">
+                    <ul class="list-unstyled">
+                      <li class="pull-left"><h3 class="panel-title">Year Over Year Metrics</h3></li>
+                      <li class="text-left"><a href="#">Create Report</a></li>
+                    </ul>
+                  </li>
+                  <li class="btn-group btn-group-sm">
+                    <button type="button" class="btn btn-info">Current Year</button>
+                    <button type="button" class="btn btn-info dropdown-toggle text-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="caret"></span>
+                      <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Action</a></li>
+                      <li><a href="#">Another action</a></li>
+                      <li><a href="#">Something else here</a></li>
+                      <li role="separator" class="divider"></li>
+                      <li><a href="#">Separated link</a></li>
+                    </ul>
+                  </li>
+                  <li class="btn-group btn-group-sm">
+                    <button type="button" class="btn btn-info">Transactions</button>
+                    <button type="button" class="btn btn-info dropdown-toggle text-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="caret"></span>
+                      <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Action</a></li>
+                      <li><a href="#">Another action</a></li>
+                      <li><a href="#">Something else here</a></li>
+                      <li role="separator" class="divider"></li>
+                      <li><a href="#">Separated link</a></li>
+                    </ul>
+                  </li>
+                  <li class="pull-right"><a href="#"><i class="fa fa-arrows fa-2x fa-fw text-muted" aria-hidden="true"></i></a></li>
+                  <li class="pull-right"><a href="#"><i class="fa fa-cog fa-2x fa-fw text-muted"></i></a></li>
+                  <li class="pull-right"><a href="#"><i class="fa fa-question-circle fa-2x fa-fw text-muted"></i></a></li>
+                </ul>
+              </div>
+              <div class="panel-body">
+                <div class="chartwrapper">
+                  <div id="chartsmoothlineid"> </div>
+                </div>
+              </div>
+              <div class="panel-footer">
+                <ul class="list-inline text-center">
+                  <li class="btn-group btn-group-xs" data-toggle="buttons">
+                    <label class="btn btn-info active"  id="current" onclick="drawSmoothLine()">
+                      <input type="checkbox" autocomplete="off">
+                      <i class="fa fa-check"></i>
+                    </label>
+                  </li>
+                  <li>Current Year</li>
+                  <li class="btn-group btn-group-xs" data-toggle="buttons">
+                    <label class="btn btn-primary active"  id="last" onclick="drawSmoothLine()">
+                      <input type="checkbox" autocomplete="off">
+                      <i class="fa fa-check"></i>
+                    </label>
+                  </li>
+                  <li>Last Year</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="flex-row row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+              <div class="panel">
+                <div class="btn btn-link btn-lg btn-block">
+                  <i class="fa fa-plus-circle"></i>&nbsp; Add Widget
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+      </div>
+      <!-- /#wrapper -->
+    </div>
+    <footer></footer>
+
+    <!-- scripts-->
+    <script src="https://unpkg.com/leaflet@0.7.7/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.js"></script>
+    <script src="charts/donut/donut.js"></script>
+    <script src="charts/smoothline/smoothline.js"> </script>
+    <script src="charts/tip.js"></script>
+    <script src="charts/toggle.js"></script>
+    <!-- <script>
+         System.import('startup');
+         drawDonut();
+         drawSmoothLine();
+         </script> -->
+    <!-- Uncomment this for production version
+         Remove the other script tags -->
+    <script src="build.js"></script>
+
+  </body>
+
+
+</html>
