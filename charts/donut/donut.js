@@ -17,12 +17,12 @@ function drawDonut(){
   var innerrad = radius/3;
 
   //set size of outer arc
-  var arc = d3.svg.arc()
+  var arc = d3.arc()
       .outerRadius(radius)
       .innerRadius(radius - innerrad);
 
   //pie config
-  var pie = d3.layout.pie()
+  var pie = d3.pie()
       .sort(null)
       .value(function(d) { return d.population; })
       .padAngle(.05)
@@ -111,7 +111,7 @@ function drawDonut(){
     ;
 
   //hover circle
-  var arcOver = d3.svg.arc()
+  var arcOver = d3.arc()
     .innerRadius(radius-innerrad)
     .outerRadius(radius + 15);
 

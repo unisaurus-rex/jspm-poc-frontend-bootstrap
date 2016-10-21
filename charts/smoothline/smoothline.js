@@ -29,38 +29,40 @@ function drawSmoothLine(){
     d3.tsv("charts/smoothline/lineyearly.tsv", function(error, data) {
       if (error) throw error;
 
-      //get+parse the data
-      var parseDate = d3.time.format("%d-%b-%y").parse;
-      var formatTime = d3.time.format("%e %B");
-      var parseMonthYear = d3.time.format("%b-%y").parse;
+    //parses time into correct format
+    var parseDate = d3.timeParse("%d-%b-%y");
+    var formatTime = d3.timeParse("%e %B");
+    var parseMonthYear = d3.timeParse("%b-%y");
       data.forEach(function(d) {
         d.date = parseMonthYear(d.date);
         d.close = +d.close;
         d.pin = +d.pin;
+
+        console.log(d.date, d.close, d.pin);
       });
 
       //setup axes
-      var x = d3.time.scale()
+      var x = d3.scaleTime()
         .range([0, width]);
-      var y = d3.scale.linear()
+      var y = d3.scaleLinear()
         .range([height, 0]);
         
       //draw axes
-      var xAxis = d3.svg.axis()
+      var xAxis = d3.axisBottom()
         .scale(x)
-        .orient("bottom")
+     //   .orient("bottom")
         .ticks(8)
-        .innerTickSize(-height)
-        .outerTickSize(0)
+        //.innerTickSize(-height)
+        //.outerTickSize(0)
         .tickPadding(10)
-        .tickFormat(d3.time.format("%b"))
+     //   .tickFormat(d3.time.format("%b"))
         ;
-      var yAxis = d3.svg.axis()
+      var yAxis = d3.axisLeft()
         .scale(y)
-        .orient("left")
+     //   .orient("left")
         .ticks(5)
-        .innerTickSize(-width)
-        .outerTickSize(0)
+        //.innerTickSize(-width)
+        //.outerTickSize(0)
         .tickPadding(10)
         .tickFormat(function(d) { return d + "MM"; })
         ;
@@ -87,17 +89,19 @@ function drawSmoothLine(){
         ;
 
       //create the areas
-      var area = d3.svg.area()
+      var area = d3.area()
+        .curve(d3.curveBasis)
         .x(function(d) { return x(d.date); })
         .y0(height)
         .y1(function(d) { return y(d.close); })
-        .interpolate("basis") //smooth lines 
+      //  .interpolate("basis") //smooth lines 
         ;
-      var areatwo = d3.svg.area()
+      var areatwo = d3.area()
+        .curve(d3.curveBasis)
         .x(function(d) { return x(d.date); })
         .y0(height)
         .y1(function(d) { return y(d.pin); })
-        .interpolate("basis") //smooth lines 
+    //    .interpolate("basis") //smooth lines 
         ;
 
       //select checkmark divs
