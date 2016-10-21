@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import drawRegions from 'drawMapRegions';
 import {getD3ClassFunction} from 'county-widget/countySalesStyle';
-import {initTooltip, positionTooltip, hideTooltip, addTooltipHTML} from 'tooltip';
+import {initTooltip, positionTooltip, positionTooltipByBox, hideTooltip, addTooltipHTML} from 'tooltip';
 
 /*
   config is object with params:
@@ -50,7 +50,8 @@ export function initCountyMap(config){
           </tbody>
         </table>`
 
-      positionTooltip(config.tooltipId, d3.mouse(this));
+      // positionTooltip(config.tooltipId, d3.mouse(this));
+      positionTooltipByBox(config.tooltipId, this);
       addTooltipHTML(config.tooltipId, tooltipBody);
     });
     counties.on("mouseout", function(){hideTooltip(config.tooltipId)});

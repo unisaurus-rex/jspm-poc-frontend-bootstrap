@@ -6,12 +6,17 @@ export function initTooltip(tooltipId, tooltipClass) {
     .classed(tooltipClass, true);
 }
 
-// tooltipCenter is array[how far right, how far down]
-export function positionTooltip(tooltipId, tooltipCenter) {
+// tooltipId: css id of the tooltip
+// el = d3 element (not a selection, just a member of a selection)
+export function positionTooltipByBox(tooltipId, el) {
+  // bbox = bounding box, bbox is svg rect object with height, width, x and y values
+  var bbox = el.getBBox();
+  console.log(bbox);
   d3.select("#" + tooltipId)
-    .classed('hidden', false)
-    .style('left', (tooltipCenter[0] + 320) + "px")
-    .style('top', (tooltipCenter[1] + 70) + "px");
+    .classed("hidden", false)
+    // need to pad bbox.x and y because of toggle bar and nav bar elements
+    .style("left", (bbox.x - 140 + 320) + "px")
+    .style("top", (bbox.y + 140) + "px");
 }
 
 export function hideTooltip(tooltipId){
@@ -21,3 +26,5 @@ export function hideTooltip(tooltipId){
 export function addTooltipHTML(tooltipId, htmlStr){
   d3.select("#" + tooltipId).html(htmlStr);
 }
+
+
