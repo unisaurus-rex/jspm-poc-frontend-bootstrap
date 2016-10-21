@@ -1,0 +1,71 @@
+.statepath {
+  fill-opacity: .2;
+  stroke: gray;
+  stroke-width: 1px;
+}
+
+.countypath {
+  fill-opacity: .8;
+  stroke: black;
+  stroke-width: 1px;
+}
+
+.lowSales {
+  fill: $brand-danger;
+}
+
+.avgSales {
+  fill: $brand-warning;
+}
+
+.highSales {
+  fill: $brand-success;
+}
+
+.countypath:hover {
+  fill-opacity: .3;
+}
+
+.hidden {
+  display: none;
+}
+
+#mapContainer {
+  min-height: 90%;
+}
+
+.legendLowSales {
+  height: 10px;
+  background-color: $brand-danger;
+}
+
+.legendAvgSales {
+  height: 10px;
+  background-color: $brand-warning;
+}
+
+.legendHighSales {
+  height: 10px;
+  background-color: $brand-success;
+}
+
+.mapTooltip {
+  position: absolute;
+  width: 180px;
+  height: 120px;
+  padding: 5px;
+  border-radius: 3px;
+  background-color: $gray-darker;
+  color: $white;
+  font-family: Source Sans Pro;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  text-align: left;
+  pointer-events: none;
+
+  th,td {
+    padding: 2px;
+  }
+}

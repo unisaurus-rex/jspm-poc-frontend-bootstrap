@@ -10,7 +10,9 @@ System.config({
   },
   paths: {
     "github:*": "jspm_packages/github/*",
-    "npm:*": "jspm_packages/npm/*"
+    "npm:*": "jspm_packages/npm/*",
+    "county-widget/*": "scripts/countyWidget/*.js",
+    "*": "scripts/*.js"
   },
 
   map: {

@@ -8156,6 +8156,63 @@ svg.svg-container {
 g.x.axis, g.y.axis {
   font-size: 6px;
   fill: #8b8c8d; }
+.statepath {
+  fill-opacity: .2;
+  stroke: gray;
+  stroke-width: 1px; }
+
+.countypath {
+  fill-opacity: .8;
+  stroke: black;
+  stroke-width: 1px; }
+
+.lowSales {
+  fill: #FD0000; }
+
+.avgSales {
+  fill: #FED100; }
+
+.highSales {
+  fill: #40C1AC; }
+
+.countypath:hover {
+  fill-opacity: .3; }
+
+.hidden {
+  display: none; }
+
+#mapContainer {
+  min-height: 90%; }
+
+.legendLowSales {
+  height: 10px;
+  background-color: #FD0000; }
+
+.legendAvgSales {
+  height: 10px;
+  background-color: #FED100; }
+
+.legendHighSales {
+  height: 10px;
+  background-color: #40C1AC; }
+
+.mapTooltip {
+  position: absolute;
+  width: 180px;
+  height: 120px;
+  padding: 5px;
+  border-radius: 3px;
+  background-color: #2c2c2c;
+  color: #ffffff;
+  font-family: Source Sans Pro;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  text-align: left;
+  pointer-events: none; }
+  .mapTooltip th, .mapTooltip td {
+    padding: 2px; }
 
 /** Navigation bar across the top of the page **/
 .navbar-brand {
