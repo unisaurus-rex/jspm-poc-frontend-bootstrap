@@ -67,6 +67,13 @@ $font-family-base: Foundry Context;
   padding-right: 36px;
 }
 
+//* Buttons **//
+.btn-link, .btn:hover {
+  border-style: dashed;
+  border-color: $brand-info;
+}
+
+
 //** Panels **//
 
 .panel { //!!!!!!!need to clean up and make modular later!!!!

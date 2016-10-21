@@ -1075,7 +1075,7 @@ a {
   text-decoration: none; }
   a:hover, a:focus {
     color: #006f94;
-    text-decoration: underline; }
+    text-decoration: none; }
   a:focus {
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
@@ -3062,7 +3062,7 @@ fieldset[disabled] a.btn {
     border-color: transparent; }
   .btn-link:hover, .btn-link:focus {
     color: #006f94;
-    text-decoration: underline;
+    text-decoration: none;
     background-color: transparent; }
   .btn-link[disabled]:hover, .btn-link[disabled]:focus,
   fieldset[disabled] .btn-link:hover,
@@ -8101,6 +8101,10 @@ a.list-group-item {
 .container-fluid {
   padding-left: 26px;
   padding-right: 36px; }
+
+.btn-link, .btn:hover {
+  border-style: dashed;
+  border-color: #00A9E0; }
 
 .panel {
   margin: 20px 10px 0 10px;
