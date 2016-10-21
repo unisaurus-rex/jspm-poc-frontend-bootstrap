@@ -1075,7 +1075,7 @@ a {
   text-decoration: none; }
   a:hover, a:focus {
     color: #006f94;
-    text-decoration: underline; }
+    text-decoration: none; }
   a:focus {
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
@@ -3062,7 +3062,7 @@ fieldset[disabled] a.btn {
     border-color: transparent; }
   .btn-link:hover, .btn-link:focus {
     color: #006f94;
-    text-decoration: underline;
+    text-decoration: none;
     background-color: transparent; }
   .btn-link[disabled]:hover, .btn-link[disabled]:focus,
   fieldset[disabled] .btn-link:hover,
@@ -8156,6 +8156,7 @@ svg.svg-container {
 g.x.axis, g.y.axis {
   font-size: 6px;
   fill: #8b8c8d; }
+
 .statepath {
   fill-opacity: .2;
   stroke: gray;
@@ -8234,13 +8235,20 @@ g.x.axis, g.y.axis {
   padding-left: 26px;
   padding-right: 36px; }
 
+.btn-link, .btn:hover {
+  border-style: dashed;
+  border-color: #00A9E0; }
+
+/** Page content **/
 .panel {
-  margin: 20px 0 0 10px;
+  margin: 20px 10px 0 10px;
   border-radius: 2px;
   max-height: 600px;
   font-size: 13px; }
   .panel a {
     font-size: 12px; }
+  .panel .panel-body {
+    height: 100%; }
   .panel .success {
     background-color: rgba(64, 193, 172, 0.15); }
   .panel .danger {

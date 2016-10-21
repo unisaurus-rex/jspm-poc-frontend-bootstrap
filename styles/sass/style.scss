@@ -10,6 +10,7 @@ $font-family-base: Foundry Context;
 @import "../../jspm_packages/npm/font-awesome@4.6.3/scss/font-awesome";
 @import "sidebar";
 @import "chart";
+@import "maps";
 
 
 /** Navigation bar across the top of the page **/
@@ -63,72 +64,103 @@ $font-family-base: Foundry Context;
 //This uses CSS3's flexbox layout to make columns within the given row the samw height
 
 
-    //** Panel Footer **//
+.container-fluid {
+  padding-left: 26px;
+  padding-right: 36px;
+}
 
-    //Use for panel footer background brand colors success and danger
-    .success{
-      background-color: transparentize($brand-success, 0.85);
-    }
+//* Buttons **//
+.btn-link, .btn:hover {
+  border-style: dashed;
+  border-color: $brand-info;
+}
+
+/** Page content **/
+
+//** Panels **//
+
+.panel { //!!!!!!!need to clean up and make modular later!!!!
+  margin: 20px 10px 0 10px;
+  border-radius: 2px;
+  max-height: 600px;
+  font-size: 13px;
+ a{
+  font-size: 12px;
+}
+
+//** Panel Body **//
+// Add height to 100% to keep the panel footer
+// fixed at the bottom.
+.panel-body {
+  height: 100%;
+}
+
+//** Panel Footer **//
+
+//Use for panel footer background brand colors success and danger
+.success{
+  background-color: transparentize($brand-success, 0.85);
+}
 
 
-    .danger{
-      background-color: transparentize($brand-danger, 0.85);
-    }
+.danger{
+  background-color: transparentize($brand-danger, 0.85);
+}
 
 
-    .alert {
-      margin-bottom: 0px;
-    }
+.alert {
+  margin-bottom: 0px;
+}
 
 
-    // Checkboxes in the panel footers
-    // using bootstrap btn class and font awesome check
-    // icon. Icon will appear when button is active,
-    // and disappear when it is not.
-    .panel-footer .btn > i.fa {
-      opacity: 0;
+// Checkboxes in the panel footers
+// using bootstrap btn class and font awesome check
+// icon. Icon will appear when button is active,
+// and disappear when it is not.
+.panel-footer .btn > i.fa {
+    opacity: 0;
 
-    }
+}
 
-    .panel-footer .btn.active > i.fa {
-      opacity: 1;
+.panel-footer .btn.active > i.fa {
+    opacity: 1;
 
-    }
+}
 
 
-  }
-  @media only screen and (min-width : 768px) {
+}
+@media only screen and (min-width : 768px) {
     .flex-row {
-      display: flex;
-      flex-wrap: wrap;
+        display: flex;
+        flex-wrap: wrap;
     }
     .flex-row > [class*='col-'] {
-      display: flex;
-      flex-direction: column;
+        display: flex;
+        flex-direction: column;
     }
     .flex-row.row:after,
     .flex-row.row:before {
-      display: flex;
+        display: flex;
     }
 
     .flex-row .thumbnail,
-    .flex-row .caption,
-    .flex-row .panel{
-      display: flex;
-      flex: 1 0 auto;
-      flex-direction: column;
+.flex-row .caption,
+.flex-row .panel{
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
 
-    }
-    .flex-row .panel-group{
-      overflow-y: auto;
-    }
-    .flex-row .panel-body{
-      overflow-y: auto;
-    }
-    .flex-text {
-      flex-grow: 1;
-    }
-    .flex-row img {
-      width: 100%;
-    }
-  }
+}
+.flex-row .panel-group{
+  overflow-y: auto;
+}
+.flex-row .panel-body{
+  overflow-y: auto;
+}
+.flex-text {
+    flex-grow: 1;
+}
+.flex-row img {
+    width: 100%;
+}
+}

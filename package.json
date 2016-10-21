@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "bundle-js": "jspm bundle-sfx scripts/startup build/build.js",
+    "bundle-js": "jspm bundle-sfx startup build/build.js",
     "bundle-sass": "node-sass --source-map true --include-path styles/sass --output-style compressed --output build/styles/css styles/sass/style.scss",
     "build": "npm run bundle-js && npm run bundle-sass && npm run copy-fonts",
     "clean-css": "rimraf build/styles/css",
