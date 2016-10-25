@@ -1,10 +1,24 @@
 //draw donut
 function drawDonut(){
-  //clear current chart
-  var svgclear = d3.select("div#donutid");
-  svgclear.selectAll("*").remove();
 
-  //select checkbox divs
+  //clear current chart with transition
+  var svgclear = d3.select("div#donutid");
+  svgclear.selectAll("*")
+  .transition()
+  .duration(1000)
+  .style("opacity", "0")
+  .remove();
+
+  setTimeout("continueChart()", 1000);
+
+ 
+
+}
+
+ function continueChart(){
+  console.log("tcontinue called")
+
+        //select checkbox divs
   var auth = document.getElementById("auth");
   var chargeBack = document.getElementById("chargeback");
   var decline = document.getElementById("decline");
@@ -39,7 +53,17 @@ function drawDonut(){
     .attr("width", width)
     .attr("height", height)
     .append("g")
-    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+    .style("opacity", "0")
+    ;
+
+  t = svg.selectAll("*");
+  svg
+  .transition()
+  .duration(1000)
+  .style("opacity", "1")
+
+  //setTimeout("tcontinue", 3999);
 
   //Draw the inner Circle
   /*svg.append("circle")
@@ -158,4 +182,5 @@ function drawDonut(){
     return d;
   }
 
-}
+  }
+

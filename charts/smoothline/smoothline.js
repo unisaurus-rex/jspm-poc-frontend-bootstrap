@@ -1,8 +1,5 @@
 function drawSmoothLine(){
-  //generate initial chart from tsv
-  updateChart();
 
-  function updateChart() {
 
     //clear current graph
     var svgclear = d3.select("div#chartsmoothlineid");
@@ -104,30 +101,34 @@ function drawSmoothLine(){
     //    .interpolate("basis") //smooth lines 
         ;
 
-      //select checkmark divs
-      var curr = document.getElementById("current");
-      var last = document.getElementById("last");
-
-      //if checkmark is checked draw area
-      if(hasClass(last, "active")){
           svgtwo.append("path")
           .datum(data)
           .attr("class", "area")
           .attr("d", area)
+          .attr("id", "lastpath")
           //.style("stroke", "#00a9e0")
           .style("fill", "#8b8c8d")
           ;          
-      }
-      //if checkmark is checked draw area
-      if(hasClass(curr, "active")){
+
         svgtwo.append("path")
           .datum(data)
           .attr("class", "area")
+          .attr("id", "currentpath")
           .attr("d", areatwo)
           //.style("stroke", "#ff0000")
           .style("fill", "#00a9e0")
           ;
-      }
     }) //end yearly plot
-  } // end update chart function
 }//end drawsmoothline
+
+//tagName, id of checkbox, id of path
+function updateLine(tagName, idName){
+  var target = document.getElementById(idName);
+  console.log("update line called", tagName, idName);
+  if(hasClass(target, "active")){
+    transitionOut( tagName, idName );
+  }
+  else{
+    transitionIn ( tagName, idName);
+  }
+}
