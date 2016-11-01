@@ -2,8 +2,12 @@ import bootstrap from 'bootstrap-sass';
 import addToggle from './toggle';
 import initMap from './createLeafletMap';
 import {createCountyWidget} from 'county-widget/countyWidget';
+//import {d3.tip} from 'charts/tip'
+import {drawDonut} from 'donut/donut';
 
 addToggle(); 
+
+
 
 // config object for map
 var map1Config = {
@@ -38,4 +42,5 @@ var countyConfig = {
 
 createCountyWidget(countyConfig, "#countyBoxes input");
 
-
+//add charts
+drawDonut();

@@ -12,6 +12,10 @@ System.config({
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*",
     "county-widget/*": "scripts/countyWidget/*.js",
+    
+    "charts/*": "scripts/charts/*.js",
+    "donut/*": "scripts/charts/donut/*.js",
+
     "*": "scripts/*.js"
   },
 

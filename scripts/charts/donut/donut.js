@@ -1,3 +1,6 @@
+//import {tip} from 'charts/tip';
+import {hasClass} from 'charts/helper';
+
 var allData;
 var width = 500,
   height = 500,
@@ -14,9 +17,10 @@ var arcOver = d3.arc()
   .outerRadius(radius + 15)
   ;
 
-
 //draw donut
-function drawDonut() {
+export function drawDonut() {
+
+
   //draw the pie 
   var svg = d3.select("div#donutid")
     .classed("svg-container", true)
@@ -42,7 +46,7 @@ function drawDonut() {
     .padAngle(.02);
 
   //plot data
-  d3.csv("charts/donut/donutdata.csv", type, function(error, data) {
+  d3.csv("scripts/charts/donut/donutdata.csv", type, function(error, data) {
     if (error) throw error;
 
 
@@ -54,13 +58,13 @@ function drawDonut() {
     allData = data;
 
     //initialize tool tip
-    var tiptwo = d3.tip()
+    /*var tiptwo = d3.tip()
       .attr('class', 'd3-tip')
       .offset([0, 0])
       .html(function(d) {
         return "<strong>" + d.data.age + ":</strong> <span>" + d.data.population + "</span>";
       })
-    svg.call(tiptwo);
+    svg.call(tiptwo);*/
 
     //sum for center text
     var sum = 0;
@@ -81,8 +85,8 @@ function drawDonut() {
       .data(pie(data))
       .enter().append("g")
       .attr("class", "arc")
-      .on('mouseover', tiptwo.show)
-      .on('mouseout', tiptwo.hide)
+      //.on('mouseover', tiptwo.show)
+      //.on('mouseout', tiptwo.hide)
       ;
 
 
@@ -132,7 +136,7 @@ function drawDonut() {
 
 }
 
-function updateDonut() {
+export function updateDonut() {
   var svg = d3.select("g#donutchart");
   var auth = document.getElementById("auth");
   var chargeBack = document.getElementById("chargeback");
