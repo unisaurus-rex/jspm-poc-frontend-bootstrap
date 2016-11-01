@@ -35,7 +35,7 @@ function drawSmoothLine(){
         d.close = +d.close;
         d.pin = +d.pin;
 
-        console.log(d.date, d.close, d.pin);
+        //console.log(d.date, d.close, d.pin);
       });
 
       //setup axes
@@ -124,7 +124,7 @@ function drawSmoothLine(){
 //tagName, id of checkbox, id of path
 function updateLine(tagName, idName){
   var target = document.getElementById(idName);
-  console.log("update line called", tagName, idName);
+  //console.log("update line called", tagName, idName);
   if(hasClass(target, "active")){
     transitionOut( tagName, idName );
   }
