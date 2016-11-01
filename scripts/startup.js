@@ -4,6 +4,7 @@ import initMap from './createLeafletMap';
 import {createCountyWidget} from 'county-widget/countyWidget';
 //import {d3.tip} from 'charts/tip'
 import {drawDonut} from 'donut/donut';
+import {drawSmoothLine} from 'smoothline/smoothline'
 
 addToggle(); 
 
@@ -44,3 +45,4 @@ createCountyWidget(countyConfig, "#countyBoxes input");
 
 //add charts
 drawDonut();
+drawSmoothLine();

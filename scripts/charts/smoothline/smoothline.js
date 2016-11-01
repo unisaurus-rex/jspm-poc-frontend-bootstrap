@@ -1,5 +1,6 @@
+import {hasClass} from 'charts/helper';
 
-function drawSmoothLine(){
+export function drawSmoothLine(){
 
 
     //clear current graph
@@ -24,7 +25,7 @@ function drawSmoothLine(){
       ;
 
     //plot yearly
-    d3.tsv("charts/smoothline/lineyearly.tsv", function(error, data) {
+    d3.tsv("scripts/charts/smoothline/lineyearly.tsv", function(error, data) {
       if (error) throw error;
 
     //parses time into correct format

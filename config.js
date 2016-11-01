@@ -15,7 +15,8 @@ System.config({
     
     "charts/*": "scripts/charts/*.js",
     "donut/*": "scripts/charts/donut/*.js",
-
+    "smoothline/*": "scripts/charts/smoothline/*.js",
+    
     "*": "scripts/*.js"
   },
 
