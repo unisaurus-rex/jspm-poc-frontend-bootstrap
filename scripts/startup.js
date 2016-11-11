@@ -44,5 +44,61 @@ var countyConfig = {
 createCountyWidget(countyConfig, "#countyBoxes input");
 
 //add charts
-drawDonut();
-drawSmoothLine();
+var donutConfig = {
+  //global config
+  width: 500,
+  height: 500,
+  filePath: "scripts/charts/donut/donutdata.csv",
+  parentDiv: "div#donutid",
+  keys: ["transactionType", "number"],
+  checkboxIds: ["auth", "chargeback", "decline"],
+  //row to css class
+  colorMap: {"Declines": "fill-danger", "Authorizations": "fill-success", "Chargebacks":"fill-warning"},
+
+  //donut
+  innerText: "TOTAL TRANS"
+};
+drawDonut(donutConfig);
+
+
+
+var xTickFormat = d3.timeFormat("%b");
+var parseMonthYear = d3.timeParse("%b-%y");
+
+var maxFunction = function(d){
+  return Math.max(d.current, d.last, d.next);
+}
+
+var minFunction = function(d){
+  return 0;
+}
+
+var smoothConfig = {
+  //global config
+  width : 400,
+  height : 115,
+  filePath: "scripts/charts/smoothline/lineyearly.tsv",
+  parentDiv: "div#chartsmoothlineid",
+  keys: ["date", "last", "current", "next"],
+  checkboxIds: {},
+  //column to css class
+  colorMap: {"last": "fill-gray area", "current": "fill-brand-info area"},
+
+  //line config
+  margin: {top:20, right: 20, bottom: 30, left: 50},
+  interpolate: "true",
+  xAxisLines: "true",
+  yAxisLines: "false",
+  xTickNumber: "8",
+  yTickNumber: "5",
+  xTickText: "",
+  yTickText: "MM",
+  xTickFormat: xTickFormat,
+  yTickFormat: "",
+  timeParse: parseMonthYear,
+  maxFunction: maxFunction, 
+  minFunction: ""
+}
+
+
+drawSmoothLine(smoothConfig);

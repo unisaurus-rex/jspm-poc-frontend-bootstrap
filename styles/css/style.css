@@ -8082,6 +8082,21 @@ a.list-group-item {
     position: relative;
     margin-right: 0; } }
 
+.fill-brand-info {
+  fill: #00A9E0; }
+
+.fill-gray {
+  fill: #8B8C8D; }
+
+.fill-danger {
+  fill: #FD0000; }
+
+.fill-success {
+  fill: #40C1AC; }
+
+.fill-warning {
+  fill: #FED100; }
+
 .d3-tip {
   line-height: 1;
   font-weight: bold;

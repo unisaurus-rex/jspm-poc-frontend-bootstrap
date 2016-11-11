@@ -1,4 +1,4 @@
-age,population
+transactionType,number
 Declines,1351
 Chargebacks,2253
 Authorizations,5407

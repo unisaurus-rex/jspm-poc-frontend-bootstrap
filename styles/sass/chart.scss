@@ -1,3 +1,5 @@
+@import "custom-variables";
+
 
 $teal: #507075;
 $vantiv-blue: #00a9e0;
@@ -6,6 +8,22 @@ $height: 300px;
 $light-grey: #8b8c8d;
 $even-lighter-grey: #dee7ef;
 $donut-width: 50%;
+
+.fill-brand-info{
+  fill: $brand-info;
+}
+.fill-gray{
+  fill: $gray;
+}
+.fill-danger{
+  fill: $brand-danger;
+}
+.fill-success{
+  fill: $brand-success;
+}
+.fill-warning{
+  fill: $brand-warning;
+}
 
 .d3-tip {
   line-height: 1;

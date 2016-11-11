@@ -1,11 +1,7 @@
 import {hasClass} from 'charts/helper';
 
-export function drawSmoothLine(){
+export function drawSmoothLine(config){
 
-
-    //clear current graph
-    var svgclear = d3.select("div#chartsmoothlineid");
-    svgclear.selectAll("*").remove();
 
     //set margins for axes
     var margin = {top: 20, right: 20, bottom: 30, left: 50},
@@ -13,7 +9,7 @@ export function drawSmoothLine(){
       height = 115 - margin.top - margin.bottom;
 
     //draw the svg and put classes into the selected div
-    var svgtwo = d3.select("div#chartsmoothlineid")
+    var svg = d3.select("div#chartsmoothlineid")
       .append("div")
       .classed("svg-container", true)
       .append("svg")
@@ -33,9 +29,16 @@ export function drawSmoothLine(){
     var formatTime = d3.timeParse("%e %B");
     var parseMonthYear = d3.timeParse("%b-%y");
       data.forEach(function(d) {
-        d.date = parseMonthYear(d.date);
-        d.close = +d.close;
-        d.pin = +d.pin;
+
+        d [ config.keys[0] ] = config.timeParse(d [ config.keys[0] ] )
+        for (var i=1; i< config.keys.length; i++)
+        {
+          console.log (config.keys[i]);
+          d[ config.keys[i]] = +d[ config.keys[i]];
+        }
+        //d.date = config.timeParse(d.date);
+        //d.last = +d.close;
+        //d.pin = +d.pin;
 
         //console.log(d.date, d.close, d.pin);
       });
@@ -51,33 +54,33 @@ export function drawSmoothLine(){
         .scale(x)
      //   .orient("bottom")
         .ticks(8)
-        .tickSizeInner(-height)
-        .tickSizeOuter(0)
+        //.tickSizeInner(-height)
+        //.tickSizeOuter(0)
         .tickPadding(10)
-        .tickFormat(d3.timeFormat("%b"))
+        .tickFormat(config.xTickFormat)
         ;
       var yAxis = d3.axisLeft()
         .scale(y)
      //   .orient("left")
         .ticks(5)
         .tickSizeInner(-width)
-        .tickSize(0)
+        .tickSizeOuter(0)
         .tickPadding(10)
         .tickFormat(function(d) { return d + "MM"; })
         ;
 
       //set domains
-      x.domain(d3.extent(data, function(d) { return d.date; }));
-      y.domain([0, d3.max(data, function(d) { return Math.max(d.close, d.pin); })]);
+      x.domain(d3.extent(data, function(d) { return d[ config.keys[0]]; }));
+      y.domain( [0, d3.max(data, function (d) { return config.maxFunction(d) })]);
 
       //x axis
-      svgtwo.append("g")
+      svg.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
         .call(xAxis)
         ;
       //y axis
-      svgtwo.append("g")
+      svg.append("g")
         .attr("class", "y axis")
         .call(yAxis)
         .append("text")
@@ -87,7 +90,28 @@ export function drawSmoothLine(){
         .style("text-anchor", "end")
         ;
 
+      for (var i =1; i < config.keys.length; i++)
+      {
+        var area = d3.area()
+          .curve(d3.curveBasis)
+          .x(function(d) {console.log ((d [ config.keys[0]])); return x(d[ config.keys[0]]); })
+          .y0(height)
+          .y1(function(d) {  console.log ((d [ config.keys[i]])); return y(d[ config.keys[i] ]); })
+        ;
+        svg.append("path")
+          .data([data])
+          
+          .attr("id", config.keys[i] + "path")
+          .attr("d", area)
+          .attr("class", function(d){
+            return config.colorMap [[config.keys[i]]];
+          })
+        ;      
+      }
+
+
       //create the areas
+      /*
       var area = d3.area()
         .curve(d3.curveBasis)
         .x(function(d) { return x(d.date); })
@@ -103,23 +127,25 @@ export function drawSmoothLine(){
     //    .interpolate("basis") //smooth lines 
         ;
 
-          svgtwo.append("path")
-          .datum(data)
-          .attr("class", "area")
-          .attr("d", area)
+          svg.append("path")
+          .data([data])
+          
           .attr("id", "lastpath")
-          //.style("stroke", "#00a9e0")
-          .style("fill", "#8b8c8d")
+          .attr("d", area)
+          .attr("class", function(d){
+            return config.colorMap [[config.keys[1]]]
+          })
           ;          
 
-        svgtwo.append("path")
+        svg.append("path")
           .datum(data)
           .attr("class", "area")
           .attr("id", "currentpath")
           .attr("d", areatwo)
-          //.style("stroke", "#ff0000")
-          .style("fill", "#00a9e0")
-          ;
+          .attr("class", function(d){
+            return config.colorMap [[config.keys[2]]];
+          })
+          ;*/
     }) //end yearly plot
 }//end drawsmoothline
 
