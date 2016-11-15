@@ -150,6 +150,46 @@ export function drawDonut(config) {
 }//end drawDonut
 
 export function updateDonut() {
+
+var config = {
+  //global config
+  width: 500,
+  height: 500,
+  filePath: "scripts/charts/donut/donutdata.csv",
+  parentDiv: "div#donutid",
+  keys: ["transactionType", "number"],
+  checkboxIds: ["auth", "chargeback", "decline"],
+  //row to css class
+  classMap: {"Declines": "fill-danger", "Authorizations": "fill-success", "Chargebacks":"fill-warning"},
+
+  //donut
+  innerText: "TOTAL TRANS"
+};
+
+
+  function type(d) {
+    d[ config.keys[1]] = +d[ config.keys[1]];
+    return d;
+  }
+
+
+    var radius = Math.min( config.width, config.height) / 2;
+  var innerRad = radius / 4;
+  var hoverRad = 15;
+  var padAngle = 0.03;
+
+    //sizing for arc segments
+  var arc = d3.arc()
+    .outerRadius(radius) 
+    .innerRadius(radius - innerRad) 
+  ;
+
+  //sizing for hover arc segments
+  var hoverArc = d3.arc()
+    .innerRadius(radius - innerRad)
+    .outerRadius(radius + hoverRad)
+  ;
+
   //initialize tool tip
   /*var tiptwo = d3.tip()
     .attr('class', 'd3-tip')
@@ -165,11 +205,13 @@ export function updateDonut() {
   var chargeBack = document.getElementById("chargeback");
   var decline = document.getElementById("decline");
 
+  console.log(allData);
+
   var newdata = allData.filter(function(d) {
       if (d.transactionType == "Authorizations") {
-        if (!d3.select("#auth").classed("active")) {
-          return true;
-        } else return false;
+        if (d3.select("#auth").classed("active")) {
+          return false;
+        } else return true;
       }
 
       return true;
@@ -195,6 +237,8 @@ export function updateDonut() {
       }*/
 
     })
+
+  console.log("newdata", newdata);
 
   //pie config
   var pie = d3.pie()
@@ -226,6 +270,8 @@ export function updateDonut() {
     .attr("class", "arc")
     .append("path")
     .style("fill", function(d) {
+      console.log("enter")
+      console.log(d)
       return config.classMap [ d.data[config.keys[0]] ];
     })
 

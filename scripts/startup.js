@@ -1,10 +1,12 @@
 import bootstrap from 'bootstrap-sass';
-import {drawDonut} from 'donut/donut.js';
-import {drawSmoothLine} from 'smoothline/smoothline.js'
+
 import addToggle from './toggle.js';
 import initMap from './createLeafletMap.js';
 import {createCountyWidget} from 'county-widget/countyWidget.js';
 
+//import {drawDonut} from 'donut/donut.js';
+//import {drawSmoothLine} from 'smoothline/smoothline.js'
+import {createDonutWidget} from 'donut-widget/donutInteraction.js'
 
 addToggle(); 
 
@@ -58,7 +60,9 @@ var donutConfig = {
   //donut
   innerText: "TOTAL TRANS"
 };
-drawDonut(donutConfig);
+
+//drawDonut(donutConfig);
+createDonutWidget(donutConfig, "transactionType")
 
 
 
@@ -73,7 +77,7 @@ var minFunction = function(d){
   return 0;
 }
 
-var smoothConfig = {
+/*var smoothConfig = {
   //global config
   width : 400,
   height : 115,
@@ -101,4 +105,4 @@ var smoothConfig = {
 }
 
 
-drawSmoothLine(smoothConfig);
+drawSmoothLine(smoothConfig);*/

@@ -16,6 +16,7 @@ System.config({
     "donut/*": "scripts/charts/donut/*",
     "smoothline/*": "scripts/charts/smoothline/*",
     
+    "donut-widget/*": "scripts/charts/donutWidget/*",
     "county-widget/*": "scripts/countyWidget/*",
     "*": "scripts/*"
   },
