@@ -41,7 +41,7 @@ var countyConfig = {
   tooltipClass: "mapTooltip"
 };
 
-createCountyWidget(countyConfig, "#countyBoxes input");
+createCountyWidget(countyConfig, "countyRange");
 
 //add charts
 var donutConfig = {

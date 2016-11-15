@@ -17,7 +17,7 @@
 
     <!-- Custom CSS -->
     <link href="https://unpkg.com/leaflet@0.7.7/dist/leaflet.css" rel="stylesheet"/>
-    <link href="styles/css/style.css" rel="stylesheet">
+    <link href="build/styles/css/style.css" rel="stylesheet">
 
     <!--&lt;!&ndash; HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries &ndash;&gt;-->
     <!--&lt;!&ndash; WARNING: Respond.js doesn't work if you view the page via file:// &ndash;&gt;-->
@@ -103,22 +103,22 @@
                 <div class="pull-left">
                   <strong>Filter By Profile</strong>
                   <ul id="countyBoxes" class="list-inline">
-                    <li class="btn-group btn-group-xs" data-toggle="buttons">
-                      <label class="btn btn-default ">
+                    <li class="btn-group btn-group-xs active" data-toggle="buttons">
+                      <label id="cboxTest" class="btn btn-default active" name="countyRange">
                         <input type="checkbox" value="18-34" name="countyRange">
                         <i class="fa fa-check"></i>
                       </label>
                     </li>
                     <li>College Student</li>
                     <li class="btn-group  btn-group-xs" data-toggle="buttons">
-                      <label class="btn btn-default ">
+                      <label class="btn btn-default active" name="countyRange">
                         <input type="checkbox" value="35-54" name="countyRange">
                         <i class="fa fa-check"></i>
                       </label>
                     </li>
                     <li>Outdoorsman</li>
                     <li class="btn-group btn-group-xs" data-toggle="buttons">
-                      <label class="btn btn-default ">
+                      <label class="btn btn-default active" name="countyRange">
                         <input type="checkbox" value="55+" name="countyRange">
                         <i class="fa fa-check"></i>
                       </label>
@@ -353,7 +353,7 @@
               </div>
             </div>
           </div>
-       </div>
+        </div>
 
         <!-- Add widget row -->
         <div class="flex-row row">
@@ -382,9 +382,7 @@
     <script>
      System.import('startup');
     </script>
-    <!-- Uncomment this for production version
-         Remove the other script tags
-         <script src="build.js"></script> -->
+
 
   </body>
 
