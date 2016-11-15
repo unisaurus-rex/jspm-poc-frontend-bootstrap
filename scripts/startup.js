@@ -1,7 +1,7 @@
 import bootstrap from 'bootstrap-sass';
-import addToggle from './toggle';
-import initMap from './createLeafletMap';
-import {createCountyWidget} from 'county-widget/countyWidget';
+import addToggle from './toggle.js';
+import initMap from './createLeafletMap.js';
+import {createCountyWidget} from 'county-widget/countyWidget.js';
 
 addToggle(); 
 

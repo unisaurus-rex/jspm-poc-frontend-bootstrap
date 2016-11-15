@@ -1,6 +1,6 @@
 import $ from 'jquery';
-import {initCountyMap, styleCountyBySales} from 'county-widget/countyMap';
-import {addCheckboxObservers, getCheckedValues} from 'bootstrapCheckboxObserver';
+import {initCountyMap, styleCountyBySales} from 'county-widget/countyMap.js';
+import {addCheckboxObservers, getCheckedValues} from 'bootstrapCheckboxObserver.js';
 
 // draw a county map and add dynamic styles to the county regions
 // countyConfig: config object for initCountyMap
