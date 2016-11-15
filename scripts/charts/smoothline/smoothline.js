@@ -33,7 +33,7 @@ export function drawSmoothLine(config){
         d [ config.keys[0] ] = config.timeParse(d [ config.keys[0] ] )
         for (var i=1; i< config.keys.length; i++)
         {
-          console.log (config.keys[i]);
+          //console.log (config.keys[i]);
           d[ config.keys[i]] = +d[ config.keys[i]];
         }
         //d.date = config.timeParse(d.date);
@@ -94,9 +94,9 @@ export function drawSmoothLine(config){
       {
         var area = d3.area()
           .curve(d3.curveBasis)
-          .x(function(d) {console.log ((d [ config.keys[0]])); return x(d[ config.keys[0]]); })
+          .x(function(d) {return x(d[ config.keys[0]]); })
           .y0(height)
-          .y1(function(d) {  console.log ((d [ config.keys[i]])); return y(d[ config.keys[i] ]); })
+          .y1(function(d) {  return y(d[ config.keys[i] ]); })
         ;
         svg.append("path")
           .data([data])
@@ -104,7 +104,7 @@ export function drawSmoothLine(config){
           .attr("id", config.keys[i] + "path")
           .attr("d", area)
           .attr("class", function(d){
-            return config.colorMap [[config.keys[i]]];
+            return config.classMap [[config.keys[i]]];
           })
         ;      
       }
@@ -133,7 +133,7 @@ export function drawSmoothLine(config){
           .attr("id", "lastpath")
           .attr("d", area)
           .attr("class", function(d){
-            return config.colorMap [[config.keys[1]]]
+            return config.classMap [[config.keys[1]]]
           })
           ;          
 
@@ -143,7 +143,7 @@ export function drawSmoothLine(config){
           .attr("id", "currentpath")
           .attr("d", areatwo)
           .attr("class", function(d){
-            return config.colorMap [[config.keys[2]]];
+            return config.classMap [[config.keys[2]]];
           })
           ;*/
     }) //end yearly plot

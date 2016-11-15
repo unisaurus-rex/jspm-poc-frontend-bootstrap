@@ -53,7 +53,7 @@ var donutConfig = {
   keys: ["transactionType", "number"],
   checkboxIds: ["auth", "chargeback", "decline"],
   //row to css class
-  colorMap: {"Declines": "fill-danger", "Authorizations": "fill-success", "Chargebacks":"fill-warning"},
+  classMap: {"Declines": "fill-danger", "Authorizations": "fill-success", "Chargebacks":"fill-warning"},
 
   //donut
   innerText: "TOTAL TRANS"
@@ -82,7 +82,7 @@ var smoothConfig = {
   keys: ["date", "last", "current", "next"],
   checkboxIds: {},
   //column to css class
-  colorMap: {"last": "fill-gray area", "current": "fill-brand-info area"},
+  classMap: {"last": "fill-gray area", "current": "fill-brand-info area"},
 
   //line config
   margin: {top:20, right: 20, bottom: 30, left: 50},

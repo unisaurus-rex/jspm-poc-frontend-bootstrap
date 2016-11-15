@@ -3,6 +3,45 @@ import {hasClass} from 'charts/helper';
 
 var allData;
 
+function drawInnerText(svg, config, data){
+
+  //get the divs of all the checkboxes
+  var divs = [];
+  for (var i =0; i< config.checkboxIds.length; i++){
+    divs[i] =  document.getElementById( config.checkboxIds[i] )
+  }
+
+  //get the sum for the inner text 
+  var sum = 0;
+  data.forEach(function(d, j) {
+    for (var i=0; i< config.checkboxIds.length; i++)
+    {
+      if ( hasClass( divs[i], "active") && d[config.keys[i]] == d[config.keys[j]] )
+      {
+        sum+= d[ config.keys[1]];
+      }
+    }
+  })
+
+  //add text for inner circle
+  svg.append("text")
+    .attr("dy", "-0.5em")
+    .style("text-anchor", "middle")
+    .attr("class", "inside")
+    .text(function() {
+      return config.innerText;
+    })
+  ;
+  svg.append("text")
+    .attr("dy", ".95em")
+    .style("text-anchor", "middle")
+    .attr("class", "data")
+    .text(function() {
+      return sum;
+    })
+  ;
+}
+
 //draw donut
 export function drawDonut(config) {
   //initialize tool tip
@@ -60,11 +99,8 @@ export function drawDonut(config) {
   d3.csv(config.filePath, type, function(error, data) {
     if (error) throw error;
 
-    //get the divs of all the checkboxes
-    var divs = [];
-    for (var i =0; i< config.checkboxIds.length; i++){
-      divs[i] =  document.getElementById( config.checkboxIds[i] )
-    }
+
+    drawInnerText(svg, config, data);
 
     //make a copy of the data for update function
     allData = data;
@@ -73,17 +109,6 @@ export function drawDonut(config) {
     //console.log("data", data);
     //console.log(data[0][0]);
 
-    //get the sum for the inner text 
-    var sum = 0;
-    data.forEach(function(d, j) {
-      for (var i=0; i< config.checkboxIds.length; i++)
-      {
-        if ( hasClass( divs[i], "active") && d[config.keys[i]] == d[config.keys[j]] )
-        {
-          sum+= d[ config.keys[1]];
-        }
-      }
-    })
 
     //add arc elements
     var g = svg.selectAll(".arc")
@@ -98,7 +123,7 @@ export function drawDonut(config) {
     g.append("path")
       .attr("d", arc)
       .attr("class", function(d){
-        return config.colorMap [ d.data[config.keys[0]] ];
+        return config.classMap [ d.data[config.keys[0]] ];
       })
       .on("mouseover", function(d) {
         d3.select(this).transition()
@@ -112,23 +137,7 @@ export function drawDonut(config) {
       })
     ;
 
-    //add text for inner circle
-    svg.append("text")
-      .attr("dy", "-0.5em")
-      .style("text-anchor", "middle")
-      .attr("class", "inside")
-      .text(function() {
-        return config.innerText;
-      })
-    ;
-    svg.append("text")
-      .attr("dy", ".95em")
-      .style("text-anchor", "middle")
-      .attr("class", "data")
-      .text(function() {
-        return sum;
-      })
-    ;
+
 
   }); //end d3 read
 
@@ -141,8 +150,6 @@ export function drawDonut(config) {
 }//end drawDonut
 
 export function updateDonut() {
-
-
   //initialize tool tip
   /*var tiptwo = d3.tip()
     .attr('class', 'd3-tip')
@@ -219,7 +226,7 @@ export function updateDonut() {
     .attr("class", "arc")
     .append("path")
     .style("fill", function(d) {
-      return config.colorMap [ d.data[config.keys[0]] ];
+      return config.classMap [ d.data[config.keys[0]] ];
     })
 
   .merge(path)
