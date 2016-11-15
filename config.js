@@ -11,13 +11,13 @@ System.config({
   paths: {
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*",
-    "county-widget/*": "scripts/countyWidget/*.js",
     
-    "charts/*": "scripts/charts/*.js",
-    "donut/*": "scripts/charts/donut/*.js",
-    "smoothline/*": "scripts/charts/smoothline/*.js",
+    "charts/*": "scripts/charts/*",
+    "donut/*": "scripts/charts/donut/*",
+    "smoothline/*": "scripts/charts/smoothline/*",
     
-    "*": "scripts/*.js"
+    "county-widget/*": "scripts/countyWidget/*",
+    "*": "scripts/*"
   },
 
   map: {

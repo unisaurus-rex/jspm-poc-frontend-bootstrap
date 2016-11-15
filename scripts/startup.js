@@ -1,10 +1,10 @@
 import bootstrap from 'bootstrap-sass';
-import addToggle from './toggle';
-import initMap from './createLeafletMap';
-import {createCountyWidget} from 'county-widget/countyWidget';
-//import {d3.tip} from 'charts/tip'
-import {drawDonut} from 'donut/donut';
-import {drawSmoothLine} from 'smoothline/smoothline'
+import {drawDonut} from 'donut/donut.js';
+import {drawSmoothLine} from 'smoothline/smoothline.js'
+import addToggle from './toggle.js';
+import initMap from './createLeafletMap.js';
+import {createCountyWidget} from 'county-widget/countyWidget.js';
+
 
 addToggle(); 
 
