@@ -10,6 +10,7 @@ import {initTooltip, positionTooltip, positionTooltipByBox, hideTooltip, addTool
   leafletMap: leaflet map object
   tooltipId: id to be used by tooltip that goes with map
   tooltipClass: css to be used by tooltip that goes with map
+  dataRanges: category ranges for styling
 */
 
 export function initCountyMap(config){
@@ -55,6 +56,8 @@ export function initCountyMap(config){
       addTooltipHTML(config.tooltipId, tooltipBody);
     });
     counties.on("mouseout", function(){hideTooltip(config.tooltipId)});
+
+    styleCountyBySales(config.dataRanges);
   });
 }
 
