@@ -8680,7 +8680,6 @@ $__System.register("a", [], function (_export) {
   function positionTooltipByBox(tooltipId, el) {
     // bbox = bounding box, bbox is svg rect object with height, width, x and y values
     var bbox = el.getBBox();
-    console.log(bbox);
     d3.select("#" + tooltipId).classed("hidden", false)
     // need to pad bbox.x and y because of toggle bar and nav bar elements
     .style("left", bbox.x - 140 + 320 + "px").style("top", bbox.y + 140 + "px");
@@ -8708,6 +8707,7 @@ $__System.register('b', ['5', '8', '9', 'a'], function (_export) {
     leafletMap: leaflet map object
     tooltipId: id to be used by tooltip that goes with map
     tooltipClass: css to be used by tooltip that goes with map
+    dataRanges: category ranges for styling
   */
 
   'use strict';
@@ -8758,6 +8758,8 @@ $__System.register('b', ['5', '8', '9', 'a'], function (_export) {
       counties.on("mouseout", function () {
         hideTooltip(config.tooltipId);
       });
+
+      styleCountyBySales(config.dataRanges);
     });
   }
 
@@ -8791,47 +8793,165 @@ $__System.register('b', ['5', '8', '9', 'a'], function (_export) {
     execute: function () {}
   };
 });
-$__System.register("c", ["b"], function (_export) {
+$__System.register("c", [], function (_export) {
+  /*
+    Bootstrap checkboxes are wrapped in labels. Ex:
+  
+    <label class="btn">
+    <input type="checkbox"></input
+    </label>
+  
+    A selected checkbox in bootstrap has a class named active added
+    to the label. Ex:
+  
+    <label class="btn active">
+    <input type="checkbox"></input
+    </label>
+  
+    Bootstrap should also add a checked property
+    to the input box, but this cannot be guaranteed based on testing
+    The only reliable way to determine if a box has been checked
+    is to observe the addition of the active class to the label
+  
+    No events are fired for the addition or removal of classes from a dom
+    element, so we cannot register an event listener for addition or removal
+    of the active class to a bootstrap checkbox label.
+    Mutation Observer's are a part of the DOM standard and supported by all
+    major browsers. Mutation Observers allow you to watch for changes to
+    element attributes.
+    See this link for more detail:
+    https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver
+  */
 
-  // draw a county map and add dynamic styles to the county regions
-  // countyConfig: config object for initCountyMap
-  // inputGroupSelector: css selector string to select all checkboxes that affect styles
-  // selector string should end with 'input'
+  /*
+   * @function addCheckboxObservers
+   * @param cboxGropuName {string} name attribute of the bootstrap checkbox group
+            both the label and the input element need this attribute
+   * @param callback {function} function to call if the checkbox is checked or unchecked. This function must take an array of strings. These strings are the value associated with each checked input.
+   */
   "use strict";
 
-  var initCountyMap, styleCountyBySales;
+  /*
+   * @function addObserver
+   * @param el {DOM Node} a dom element (ie not a jquery object but the element
+   *        a jquery object would wrap
+   * @param callback {function} a function to execute when a checkbox is checked or
+   *        unchecked.  The function will receive no arguments.
+   * @param inputSelector {string} css selector for choosing selected checkboxes
+   * @description execute a callback function when a bootstrap checkbox is checked
+   *              or unchecked
+   */
 
-  // get checked values as an array
-  // selector: css selector that will return an input element that is checked
+  _export("addCheckboxObservers", addCheckboxObservers);
 
-  _export("createCountyWidget", createCountyWidget);
+  /*
+   * @function mutationFuncBuilder
+   * @param callback {function} function to call if checkbox is checked or unchecked
+   * @param inputSelector {string} css selector string which selects active checkboxes
+   * @returns {function}
+   * @description builds a callback function for use in array.forEach()
+   */
 
-  function createCountyWidget(countyConfig, inputGroupSelector) {
-    initCountyMap(countyConfig);
+  _export("getCheckedValues", getCheckedValues);
 
-    // on checkbox click update the color style for each region
-    $(inputGroupSelector).change(function () {
-      var checkedSelector = inputGroupSelector + ":checked";
-      var selectedRanges = getCheckedValues(checkedSelector);
-      styleCountyBySales(selectedRanges);
+  /*
+   * @function getCheckedValues
+   * @param selector {string} css selector string for inputs of checked bootstrap checkboxes
+   * @description return array of values associated with checkboxes found by selector
+   * @returns array of strings
+   */
+
+  function addCheckboxObservers(cboxGroupName, callback) {
+    // build css selectors for the label and for inputs of active labels
+    var labelSelector = ["label[name=", cboxGroupName, "]"].join("");
+    var inputSelector = ["label.active input[name=", cboxGroupName, "]"].join("");
+
+    $(labelSelector).each(function (idx, el) {
+      addObserver(el, callback, inputSelector);
     });
   }
 
+  function addObserver(el, callback, inputSelector) {
+    // wrap the callback so it can be used if the mutation alters the checkbox
+    var mutationFunc = mutationFuncBuilder(callback, inputSelector);
+    var observer = new MutationObserver(function (mutations) {
+      mutations.forEach(mutationFunc);
+    });
+
+    // mutation observer config object, use oldValue: true so we can compare current value to old value
+    // otherwise we won't be able to tell if the active value changed
+    var config = { attributes: true, attributeOldValue: true, attributeFilter: ['class'] };
+
+    // apply the observer to el
+    observer.observe(el, config);
+  }function mutationFuncBuilder(callback, inputSelector) {
+    return function (mutation) {
+      /* mutation will track the old and new value, two cases that we care about
+         1) added active class to the label
+         2) removed active class from the label
+         mutation will fire anytime a class is added or removed, the class may or may
+         not be the active class that signals a checkbox click
+         so we check to see if the active class is the class that changed betwee old and new
+      */
+      var newHasActive = mutation.target.classList.contains('active');
+      var oldHasActive = mutation.oldValue.includes('active');
+      if (newHasActive && !oldHasActive || oldHasActive && !newHasActive) {
+        var selectedRanges = getCheckedValues(inputSelector);
+        callback(selectedRanges);
+      }
+    };
+  }
   function getCheckedValues(selector) {
     // calling .get() on a jquery object returns a plain array of elements
     return $(selector).get().map(function (el) {
       return el.value;
     });
   }
+
   return {
-    setters: [function (_b) {
+    setters: [],
+    execute: function () {}
+  };
+});
+$__System.register('d', ['5', 'b', 'c'], function (_export) {
+
+  // draw a county map and add dynamic styles to the county regions
+  // countyConfig: config object for initCountyMap
+  // inputGroupSelector: css selector string to select all checkboxes that affect styles
+  // selector string should end with 'input'
+  'use strict';
+
+  var $, initCountyMap, styleCountyBySales, addCheckboxObservers, getCheckedValues;
+
+  _export('createCountyWidget', createCountyWidget);
+
+  function createCountyWidget(countyConfig, cboxGroupName) {
+    // build a css selector string for choosing the active bootstrap checkboxes (ie checkboxes that are checked)
+    var inputSelector = ["label.active input[name=", cboxGroupName, "]"].join("");
+
+    // add the active checkboxes to countyConfig so initCountyMap can style them when the map is initialized.  If we don't do this, the regions will start out black.
+    countyConfig.dataRanges = getCheckedValues(inputSelector);
+    initCountyMap(countyConfig);
+
+    // on checkbox click update the color style for each region
+    // get all the labels with the same cboxGroupName and add mutation observers
+    addCheckboxObservers(cboxGroupName, styleCountyBySales);
+  }
+
+  return {
+    setters: [function (_) {
+      $ = _['default'];
+    }, function (_b) {
       initCountyMap = _b.initCountyMap;
       styleCountyBySales = _b.styleCountyBySales;
+    }, function (_c) {
+      addCheckboxObservers = _c.addCheckboxObservers;
+      getCheckedValues = _c.getCheckedValues;
     }],
     execute: function () {}
   };
 });
-$__System.register('1', ['3', '4', '6', 'c'], function (_export) {
+$__System.register('1', ['3', '4', '6', 'd'], function (_export) {
   'use strict';
 
   var bootstrap, addToggle, initMap, createCountyWidget, map1Config, map1, salesData, countyConfig;
@@ -8842,8 +8962,8 @@ $__System.register('1', ['3', '4', '6', 'c'], function (_export) {
       addToggle = _2['default'];
     }, function (_3) {
       initMap = _3['default'];
-    }, function (_c) {
-      createCountyWidget = _c.createCountyWidget;
+    }, function (_d) {
+      createCountyWidget = _d.createCountyWidget;
     }],
     execute: function () {
 
@@ -8875,7 +8995,7 @@ $__System.register('1', ['3', '4', '6', 'c'], function (_export) {
         tooltipClass: "mapTooltip"
       };
 
-      createCountyWidget(countyConfig, "#countyBoxes input");
+      createCountyWidget(countyConfig, "countyRange");
     }
   };
 });
