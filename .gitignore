@@ -1,6 +1,6 @@
 node_modules/**/*
-jspm_packages/**/*
+src/jspm_packages/**/*
 build/**/*
-styles/css/*.css
+src/styles/css/*.css
 .live-server.json
-/styles/css/maps.css.map
+src/styles/css/maps.css.map

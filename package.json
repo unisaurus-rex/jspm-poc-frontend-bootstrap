@@ -24,6 +24,9 @@
     "rimraf": "^2.5.4"
   },
   "jspm": {
+    "directories": {
+      "baseURL": "src"
+    },
     "dependencies": {
       "bootstrap-sass": "github:twbs/bootstrap-sass@^3.3.7",
       "font-awesome": "npm:font-awesome@^4.6.3",
