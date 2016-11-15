@@ -11,7 +11,6 @@ export function initTooltip(tooltipId, tooltipClass) {
 export function positionTooltipByBox(tooltipId, el) {
   // bbox = bounding box, bbox is svg rect object with height, width, x and y values
   var bbox = el.getBBox();
-  console.log(bbox);
   d3.select("#" + tooltipId)
     .classed("hidden", false)
     // need to pad bbox.x and y because of toggle bar and nav bar elements
