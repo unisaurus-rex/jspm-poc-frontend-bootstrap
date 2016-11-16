@@ -4,16 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "bundle-js": "jspm bundle-sfx startup build/build.js",
-    "bundle-sass": "node-sass --source-map true --include-path styles/sass --output-style compressed --output build/styles/css styles/sass/style.scss",
     "build": "npm run bundle-js && npm run bundle-sass && npm run copy-fonts",
+    "bundle-js": "jspm bundle-sfx startup.js build/build.js",
+    "bundle-sass": "node-sass --source-map true --include-path src/styles/sass --output-style compressed --output build/styles/css src/styles/sass/style.scss",
     "clean-css": "rimraf build/styles/css",
     "clean-fonts": "rimraf build/styles/fonts",
     "clean-styles": "npm run clean-css && npm run clean-fonts",
-    "copy-fonts": "copyfiles -u 1 styles/fonts/**/* styles/fonts/* build/styles",
+    "copy-fonts": "copyfiles -u 1 src/styles/fonts/**/* src/styles/fonts/* build/styles",
     "prebuild": "npm run clean-styles",
-    "sass": "node-sass --source-map true --include-path styles/sass --output styles/css styles/sass/style.scss",
-    "watch-sass": "node-sass --source-map true --watch styles/sass --output styles/css styles/sass/style.scss"
+    "sass": "node-sass --source-map true --include-path src/styles/sass --output src/styles/css src/styles/sass/style.scss",
+    "watch-sass": "node-sass --source-map true --watch src/styles/sass --output src/styles/css src/styles/sass/style.scss"
   },
   "author": "",
   "license": "ISC",
