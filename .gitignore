@@ -4,3 +4,4 @@ build/**/*
 src/styles/css/*.css
 .live-server.json
 src/styles/css/maps.css.map
+*.log
