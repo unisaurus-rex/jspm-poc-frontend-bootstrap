@@ -20,14 +20,19 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [],
     
+    proxies: {
+      '/jspm_packages': '/base/src/jspm_packages'
+    },
+    
     jspm: {
       // karma-jspm needs file paths from the root of the project (yes, this is kind of contradictory to jspm's config.js)
       // override config.js's path rule for '*'
       // note that base is how karma-jspm serves files, it adds a base folder that is the root of all folders/files server in the project
       paths: {
+        'scripts/*': 'base/src/scripts/*',
         '*': 'base/*'
       },
-
+      
       // files that may be imported by the test files (relative to root)
       serveFiles: ['src/scripts/**/*.js'],
 

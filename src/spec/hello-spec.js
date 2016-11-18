@@ -1,3 +1,5 @@
+import addToggle from 'toggle';
+ 
 describe("hello world", function(){
   it("passes", function(){
     var t = true;
