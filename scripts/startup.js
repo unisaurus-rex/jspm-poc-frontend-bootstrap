@@ -1,9 +1,7 @@
 import bootstrap from 'bootstrap-sass';
-import addToggle from './toggle';
 import initMap from './createLeafletMap';
 import {createCountyWidget} from 'county-widget/countyWidget';
 
-addToggle(); 
 
 // config object for map
 var map1Config = {

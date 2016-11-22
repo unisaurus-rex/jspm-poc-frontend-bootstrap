@@ -12,6 +12,9 @@ $font-family-base: Foundry Context;
 @import "chart";
 @import "maps";
 
+body{
+  display: flex;
+}
 
 /** Navigation bar across the top of the page **/
 
@@ -70,7 +73,7 @@ $font-family-base: Foundry Context;
 }
 
 //* Buttons **//
-.btn-link, .btn:hover {
+.btn-link, .btn-link:hover {
   border-style: dashed;
   border-color: $brand-info;
 }
@@ -80,7 +83,7 @@ $font-family-base: Foundry Context;
 //** Panels **//
 
 .panel { //!!!!!!!need to clean up and make modular later!!!!
-  margin: 20px 10px 0 10px;
+  margin: 20px 30px;
   border-radius: 2px;
   max-height: 600px;
   font-size: 13px;

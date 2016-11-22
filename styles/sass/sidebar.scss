@@ -1,46 +1,6 @@
 @import "custom-variables";
 // Custom style for the sidebar navigation menu
 
-#wrapper {
-  padding-left: 0;
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-}
-
-#wrapper.toggled {
-  padding-left: 320px;
-}
-
-#sidebar-wrapper {
-  z-index: 1000;
-  position: fixed;
-  left: 320px;
-  width: 0;
-  height: 100%;
-  margin-left: -320px;
-  overflow-y: auto;
-  background: $gray-darker;
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-}
-
-#wrapper.toggled #sidebar-wrapper {
-  width: 320px;
-}
-
-#page-content-wrapper {
-  width: 100%;
-  position: absolute;
-}
-
-#wrapper.toggled #page-content-wrapper {
-  position: absolute;
-
-}
 
 //** Page-header **//
 //
@@ -53,23 +13,31 @@
   font-style: normal;
   font-stretch: normal;
   height: 17px;
-  width: 229px;
   line-height: 0.47;
   border: none;
   text-align: left;
   margin: 23px 40px 48px;
   white-space: nowrap;
+  background: $gray-darker;
 }
 
 
 /* Sidebar Styles */
+.list-group {
+  background-color: $gray-darker;
+  margin-bottom: 0px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+
+}
 
 //** List-group-item **//
 //
 // Extended class from Bootstrap, list-group-item used for
 // a list of items with associated icons in the sidebar navigation
 .list-group-item {
-  width: 320px;
   height: 55px;
 }
 
@@ -82,31 +50,3 @@ a.list-group-item {
   padding-left: 40px;
 }
 
-
-@media(min-width:1200px) {
-  #wrapper {
-    padding-left: 320px;
-  }
-
-  #wrapper.toggled {
-    padding-left: 0;
-
-  }
-
-  #sidebar-wrapper {
-    width: 320px;
-  }
-
-  #wrapper.toggled #sidebar-wrapper {
-    width: 0;
-  }
-
-  #page-content-wrapper {
-    position: relative;
-  }
-
-  #wrapper.toggled #page-content-wrapper {
-    position: relative;
-    margin-right: 0;
-  }
-}
