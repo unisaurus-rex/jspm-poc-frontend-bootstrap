@@ -1,4 +1,4 @@
 transactionType,number
-Declines,1351
-Chargebacks,2253
-Authorizations,5407
+declines,1351
+chargebacks,2253
+authorizations,5407

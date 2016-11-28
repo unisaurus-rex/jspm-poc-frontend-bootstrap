@@ -2,7 +2,6 @@ import {addCheckboxObservers, getCheckedValues} from 'bootstrapCheckboxObserver.
 import {drawDonut, updateDonut} from 'donut/donut.js';
 
 export function createDonutWidget( chartConfig, cboxGroupName ){
-	drawDonut(chartConfig);
-	addCheckboxObservers(cboxGroupName, updateDonut);
+	var cb = drawDonut(chartConfig);
+	addCheckboxObservers(cboxGroupName, cb);
 }
-

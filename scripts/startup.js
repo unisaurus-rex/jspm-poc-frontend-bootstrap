@@ -4,13 +4,10 @@ import addToggle from './toggle.js';
 import initMap from './createLeafletMap.js';
 import {createCountyWidget} from 'county-widget/countyWidget.js';
 
-//import {drawDonut} from 'donut/donut.js';
 //import {drawSmoothLine} from 'smoothline/smoothline.js'
 import {createDonutWidget} from 'donut-widget/donutInteraction.js'
 
 addToggle(); 
-
-
 
 // config object for map
 var map1Config = {
@@ -45,7 +42,6 @@ var countyConfig = {
 
 createCountyWidget(countyConfig, "countyRange");
 
-//add charts
 var donutConfig = {
   //global config
   width: 500,
@@ -53,19 +49,17 @@ var donutConfig = {
   filePath: "scripts/charts/donut/donutdata.csv",
   parentDiv: "div#donutid",
   keys: ["transactionType", "number"],
-  checkboxIds: ["auth", "chargeback", "decline"],
+  checkboxIds: ["authorizations", "chargebacks", "declines"],
   //row to css class
-  classMap: {"Declines": "fill-danger", "Authorizations": "fill-success", "Chargebacks":"fill-warning"},
+  classMap: {"declines": "fill-danger", "authorizations": "fill-success", "chargebacks":"fill-warning"},
 
   //donut
   innerText: "TOTAL TRANS"
 };
 
-//drawDonut(donutConfig);
-createDonutWidget(donutConfig, "transactionType")
+createDonutWidget(donutConfig, "transactionType");
 
-
-
+/*
 var xTickFormat = d3.timeFormat("%b");
 var parseMonthYear = d3.timeParse("%b-%y");
 
@@ -75,7 +69,7 @@ var maxFunction = function(d){
 
 var minFunction = function(d){
   return 0;
-}
+}*/
 
 /*var smoothConfig = {
   //global config
@@ -106,3 +100,4 @@ var minFunction = function(d){
 
 
 drawSmoothLine(smoothConfig);*/
+
