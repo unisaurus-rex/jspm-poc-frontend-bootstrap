@@ -7,13 +7,11 @@ export function drawDonut(config) {
   var innerRad = radius / 4;
   var hoverRad = 15;
   var padAngle = 0;
-
   var svg = drawSvg();
   var arc = defineArc (radius, radius-innerRad);
   var hoverArc = defineArc (radius-innerRad, radius+hoverRad);
   var pie = definePie();
-
-  //draw center text
+  
   drawText();
 
   d3.csv(config.filePath, type, function(error, data) {
@@ -25,88 +23,26 @@ export function drawDonut(config) {
     //make a copy of the data
     allData = data;
 
-    //add arc elements
+    var path = svg.selectAll("path");
     var g = svg.selectAll(".arc")
-      .data(pie(data), function(d){return d.data[ config.keys[0] ]})
-      .enter().append("g")
-      .attr("class", "arc")
+      .data(pie(allData), function(d){return d[ config.keys[0]]})
     ;
 
-    //add path elements and define hover behavior
-    g.append("path")
-      .attr("d", arc)
-      .attr("class", function(d){
-        return config.classMap[ d.data[ config.keys[0]]];
-      })
-      .on("mouseover", function(d) {
-        d3.select(this).transition()
-          .duration(1000)
-          .attr("d", hoverArc);
-      })
-      .on("mouseout", function(d) {
-        d3.select(this).transition()
-          .duration(1000)
-          .attr("d", arc);
-      })
-    ;
+    enterAndUpdate(g, path, allData);
   }); //end d3 read
 
   return function updateDonut() {
 
-    var newdata = filterData();
-    updateSum(svg, config, newdata);
+    var filteredData = filterData();
+    updateSum(svg, config, filteredData);
 
-    //select path divs for merge
     var path = svg.selectAll("path");
     var g = svg.selectAll(".arc")
-      .data(pie(newdata), function(d){return d[ config.keys[0]]})
+      .data(pie(filteredData), function(d){return d[ config.keys[0]]})
     ;
     
-    g
-    .data(pie(newdata))
-    .enter().append("g")
-      .attr("class", "arc")
-      .append("path")
-    .merge(path)
-    .data(pie(newdata))
-      .on("mouseover", function(d) {
-        d3.select(this).transition()
-          .duration(1000)
-          .attr("d", hoverArc);
-      })
-      .on("mouseout", function(d) {
-        d3.select(this).transition()
-          .duration(1000)
-          .attr("d", arc);
-      })
-      .attr("class", function(d){
-        return config.classMap [ d.data[ config.keys[0]] ]  + ' ' + d[ config.keys[0]];
-      })
-      .transition()
-      .duration(700)
-      .attrTween("d", arcTween)
-    ;
-
-    g
-    .exit()
-      .transition()
-      .duration(700)
-      .attr("d", arcTween)
-      .style("opacity", 0)
-      .remove()
-    ;
-
-    function arcTween(a) {
-      var startAngle = a.startAngle; //<-- keep reference to start angle
-      var i = d3.interpolate(a.startAngle, a.endAngle); //<-- interpolate start to end
-      return function(t) {
-        return arc({ //<-- return arc at each iteration from start to interpolate end
-          startAngle: startAngle,
-          endAngle: i(t)
-        });
-      };
-    }
-
+    enterAndUpdate(g, path, filteredData);
+    exit(g);
   } //end updateDonut
 
   function type(d) {
@@ -203,6 +139,54 @@ export function drawDonut(config) {
       })
     ;
   }
-    
+
+  function arcTween(a) {
+    var startAngle = a.startAngle; //<-- keep reference to start angle
+    var i = d3.interpolate(a.startAngle, a.endAngle); //<-- interpolate start to end
+    return function(t) {
+      return arc({ //<-- return arc at each iteration from start to interpolate end
+        startAngle: startAngle,
+        endAngle: i(t)
+      });
+    };
+  }
+
+  function enterAndUpdate(g, path, data){
+    g
+    .data(pie(data))
+    .enter().append("g")
+      .attr("class", "arc")
+      .append("path")
+    .merge(path)
+    .data(pie(data))
+      .on("mouseover", function(d) {
+        d3.select(this).transition()
+          .duration(1000)
+          .attr("d", hoverArc);
+      })
+      .on("mouseout", function(d) {
+        d3.select(this).transition()
+          .duration(1000)
+          .attr("d", arc);
+      })
+      .attr("class", function(d){
+        return config.classMap [ d.data[ config.keys[0]] ]  + ' ' + d[ config.keys[0]];
+      })
+      .transition()
+      .duration(700)
+      .attrTween("d", arcTween)
+    ;
+  }
+
+  function exit(g){
+    g
+    .exit()
+      .transition()
+      .duration(700)
+      .attr("d", arcTween)
+      .style("opacity", 0)
+      .remove()
+    ;
+  }
 
 }//end drawDonut
