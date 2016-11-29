@@ -45,6 +45,7 @@ export function drawDonut(config) {
     exit(g);
   } //end updateDonut
 
+
   function type(d) {
     d[ config.keys[1]] = +d[ config.keys[1]];
     return d;
@@ -85,15 +86,18 @@ export function drawDonut(config) {
 
   function filterData(){
     var divs = [];
-    for (var i =0; i< config.checkboxIds.length; i++){
-      divs[ config.checkboxIds[i] ] = document.getElementById( config.checkboxIds[i] )
+    for (var i =0; i< config.data.length; i++){
+      divs[ config.data[i] ] = document.getElementById( config.data[i] )
     }
 
     var filteredData= allData.filter( function(d) {
-      if (hasClass( divs[ d[ config.keys[0] ] ] , "active"))
-        return true;
-      else
-        return false;
+      if(divs[ d[ config.keys[0] ] ]) {
+        if (hasClass( divs[ d[ config.keys[0] ] ] , "active"))
+          return true;
+        else
+          return false;        
+      }
+      return false;
     })
     return filteredData;
   }

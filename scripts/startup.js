@@ -49,7 +49,7 @@ var donutConfig = {
   filePath: "scripts/charts/donut/donutdata.csv",
   parentDiv: "div#donutid",
   keys: ["transactionType", "number"],
-  checkboxIds: ["authorizations", "chargebacks", "declines"],
+  data: ["authorizations", "chargebacks", "declines"],
   //row to css class
   classMap: {"declines": "fill-danger", "authorizations": "fill-success", "chargebacks":"fill-warning"},
 
