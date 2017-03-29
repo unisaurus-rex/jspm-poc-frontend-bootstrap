@@ -126,7 +126,6 @@ export function drawSmoothLine(config){
         .y1(function(d) { return y(d.pin); })
     //    .interpolate("basis") //smooth lines 
         ;
-
           svg.append("path")
           .data([data])
           
@@ -136,7 +135,6 @@ export function drawSmoothLine(config){
             return config.classMap [[config.keys[1]]]
           })
           ;          
-
         svg.append("path")
           .datum(data)
           .attr("class", "area")
@@ -150,7 +148,7 @@ export function drawSmoothLine(config){
 }//end drawsmoothline
 
 //tagName, id of checkbox, id of path
-function updateLine(tagName, idName){
+export function updateLine(tagName, idName){
   var target = document.getElementById(idName);
   //console.log("update line called", tagName, idName);
   if(hasClass(target, "active")){

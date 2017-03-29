@@ -4,8 +4,8 @@ import addToggle from './toggle.js';
 import initMap from './createLeafletMap.js';
 import {createCountyWidget} from 'county-widget/countyWidget.js';
 
-//import {drawSmoothLine} from 'smoothline/smoothline.js'
-import {createDonutWidget} from 'donut-widget/donutInteraction.js'
+import {drawSmoothLine, updateLine} from 'smoothline/smoothline.js';
+import {createDonutWidget} from 'donut-widget/donutInteraction.js';
 
 addToggle(); 
 
@@ -59,28 +59,28 @@ var donutConfig = {
 
 createDonutWidget(donutConfig, "transactionType");
 
-/*
+
 var xTickFormat = d3.timeFormat("%b");
 var parseMonthYear = d3.timeParse("%b-%y");
 
 var maxFunction = function(d){
-  return Math.max(d.current, d.last, d.next);
+  return Math.max(d.current, d.last);
 }
 
 var minFunction = function(d){
   return 0;
-}*/
+}
 
-/*var smoothConfig = {
+var smoothConfig = {
   //global config
   width : 400,
   height : 115,
   filePath: "scripts/charts/smoothline/lineyearly.tsv",
   parentDiv: "div#chartsmoothlineid",
-  keys: ["date", "last", "current", "next"],
+  keys: ["date", "last", "current"],
   checkboxIds: {},
   //column to css class
-  classMap: {"last": "fill-gray area", "current": "fill-brand-info area"},
+  classMap: {"last": "fill-gray area", "current": "fill-brand-info area", "next" : "fill-brand-info area"},
 
   //line config
   margin: {top:20, right: 20, bottom: 30, left: 50},
@@ -99,5 +99,14 @@ var minFunction = function(d){
 }
 
 
-drawSmoothLine(smoothConfig);*/
+drawSmoothLine(smoothConfig);
 
+var current = d3.select("#current");
+current.on("click", function(){
+  updateLine("path", "current")
+})
+var last = d3.select("#last");
+last.on("click", function(){
+  updateLine("path", "last")
+})
+updateLine('path', 'last')
