@@ -8793,7 +8793,188 @@ $__System.register('b', ['5', '8', '9', 'a'], function (_export) {
     execute: function () {}
   };
 });
-$__System.register("c", [], function (_export) {
+$__System.register('c', ['5', 'b', 'd'], function (_export) {
+
+  // draw a county map and add dynamic styles to the county regions
+  // countyConfig: config object for initCountyMap
+  // inputGroupSelector: css selector string to select all checkboxes that affect styles
+  // selector string should end with 'input'
+  'use strict';
+
+  var $, initCountyMap, styleCountyBySales, addCheckboxObservers, getCheckedValues;
+
+  _export('createCountyWidget', createCountyWidget);
+
+  function createCountyWidget(countyConfig, cboxGroupName) {
+    // build a css selector string for choosing the active bootstrap checkboxes (ie checkboxes that are checked)
+    var inputSelector = ["label.active input[name=", cboxGroupName, "]"].join("");
+
+    // add the active checkboxes to countyConfig so initCountyMap can style them when the map is initialized.  If we don't do this, the regions will start out black.
+    countyConfig.dataRanges = getCheckedValues(inputSelector);
+    initCountyMap(countyConfig);
+
+    // on checkbox click update the color style for each region
+    // get all the labels with the same cboxGroupName and add mutation observers
+    addCheckboxObservers(cboxGroupName, styleCountyBySales);
+  }
+
+  return {
+    setters: [function (_) {
+      $ = _['default'];
+    }, function (_b) {
+      initCountyMap = _b.initCountyMap;
+      styleCountyBySales = _b.styleCountyBySales;
+    }, function (_d) {
+      addCheckboxObservers = _d.addCheckboxObservers;
+      getCheckedValues = _d.getCheckedValues;
+    }],
+    execute: function () {}
+  };
+});
+$__System.register("e", ["f"], function (_export) {
+  "use strict";
+
+  var hasClass;
+  //end drawsmoothline
+
+  //tagName, id of checkbox, id of path
+
+  _export("drawSmoothLine", drawSmoothLine);
+
+  _export("updateLine", updateLine);
+
+  //create the areas
+  /*
+  var area = d3.area()
+    .curve(d3.curveBasis)
+    .x(function(d) { return x(d.date); })
+    .y0(height)
+    .y1(function(d) { return y(d.close); })
+  //  .interpolate("basis") //smooth lines 
+    ;
+  var areatwo = d3.area()
+    .curve(d3.curveBasis)
+    .x(function(d) { return x(d.date); })
+    .y0(height)
+    .y1(function(d) { return y(d.pin); })
+  //    .interpolate("basis") //smooth lines 
+    ;
+      svg.append("path")
+      .data([data])
+      
+      .attr("id", "lastpath")
+      .attr("d", area)
+      .attr("class", function(d){
+        return config.classMap [[config.keys[1]]]
+      })
+      ;          
+    svg.append("path")
+      .datum(data)
+      .attr("class", "area")
+      .attr("id", "currentpath")
+      .attr("d", areatwo)
+      .attr("class", function(d){
+        return config.classMap [[config.keys[2]]];
+      })
+      ;*/
+  //end yearly plot
+
+  function drawSmoothLine(config) {
+
+    //set margins for axes
+    var margin = { top: 20, right: 20, bottom: 30, left: 50 },
+        width = 400 - margin.left - margin.right,
+        height = 115 - margin.top - margin.bottom;
+
+    //draw the svg and put classes into the selected div
+    var svg = d3.select("div#chartsmoothlineid").append("div").classed("svg-container", true).append("svg").attr("preserveAspectRatio", "xMinYMin meet").classed("svg-container padding", true).attr("viewBox", "0 0 " + width + " " + height)
+    //class to make it responsive
+    //.classed("svg-content-responsive", true)
+    ;
+
+    //plot yearly
+    d3.tsv("scripts/charts/smoothline/lineyearly.tsv", function (error, data) {
+      if (error) throw error;
+
+      //parses time into correct format
+      var parseDate = d3.timeParse("%d-%b-%y");
+      var formatTime = d3.timeParse("%e %B");
+      var parseMonthYear = d3.timeParse("%b-%y");
+      data.forEach(function (d) {
+
+        d[config.keys[0]] = config.timeParse(d[config.keys[0]]);
+        for (var i = 1; i < config.keys.length; i++) {
+          //console.log (config.keys[i]);
+          d[config.keys[i]] = +d[config.keys[i]];
+        }
+        //d.date = config.timeParse(d.date);
+        //d.last = +d.close;
+        //d.pin = +d.pin;
+
+        //console.log(d.date, d.close, d.pin);
+      });
+
+      //setup axes
+      var x = d3.scaleTime().range([0, width]);
+      var y = d3.scaleLinear().range([height, 0]);
+
+      //draw axes
+      var xAxis = d3.axisBottom().scale(x)
+      //   .orient("bottom")
+      .ticks(8)
+      //.tickSizeInner(-height)
+      //.tickSizeOuter(0)
+      .tickPadding(10).tickFormat(config.xTickFormat);
+      var yAxis = d3.axisLeft().scale(y)
+      //   .orient("left")
+      .ticks(5).tickSizeInner(-width).tickSizeOuter(0).tickPadding(10).tickFormat(function (d) {
+        return d + "MM";
+      });
+
+      //set domains
+      x.domain(d3.extent(data, function (d) {
+        return d[config.keys[0]];
+      }));
+      y.domain([0, d3.max(data, function (d) {
+        return config.maxFunction(d);
+      })]);
+
+      //x axis
+      svg.append("g").attr("class", "x axis").attr("transform", "translate(0," + height + ")").call(xAxis);
+      //y axis
+      svg.append("g").attr("class", "y axis").call(yAxis).append("text").attr("transform", "rotate(-90)").attr("y", 6).attr("dy", ".71em").style("text-anchor", "end");
+
+      for (var i = 1; i < config.keys.length; i++) {
+        var area = d3.area().curve(d3.curveBasis).x(function (d) {
+          return x(d[config.keys[0]]);
+        }).y0(height).y1(function (d) {
+          return y(d[config.keys[i]]);
+        });
+        svg.append("path").data([data]).attr("id", config.keys[i] + "path").attr("d", area).attr("class", function (d) {
+          return config.classMap[[config.keys[i]]];
+        });
+      }
+    });
+  }
+
+  function updateLine(tagName, idName) {
+    var target = document.getElementById(idName);
+    //console.log("update line called", tagName, idName);
+    if (hasClass(target, "active")) {
+      transitionOut(tagName, idName);
+    } else {
+      transitionIn(tagName, idName);
+    }
+  }
+
+  return {
+    setters: [function (_f) {
+      hasClass = _f.hasClass;
+    }],
+    execute: function () {}
+  };
+});
+$__System.register("d", [], function (_export) {
   /*
     Bootstrap checkboxes are wrapped in labels. Ex:
   
@@ -8913,48 +9094,213 @@ $__System.register("c", [], function (_export) {
     execute: function () {}
   };
 });
-$__System.register('d', ['5', 'b', 'c'], function (_export) {
+$__System.registerDynamic('f', [], false, function ($__require, $__exports, $__module) {
+	var _retrieveGlobal = $__System.get("@@global-helpers").prepareGlobal($__module.id, null, null);
 
-  // draw a county map and add dynamic styles to the county regions
-  // countyConfig: config object for initCountyMap
-  // inputGroupSelector: css selector string to select all checkboxes that affect styles
-  // selector string should end with 'input'
-  'use strict';
+	(function ($__global) {
+		$__global['transitionIn'] = transitionIn;
+		$__global['transitionOut'] = transitionOut;
+		$__global['hasClass'] = hasClass;
+		function hasClass(element, cls) {
+			return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+		}
 
-  var $, initCountyMap, styleCountyBySales, addCheckboxObservers, getCheckedValues;
+		/*function toggleTest (){
+  	console.log("toggle called");
+  	var auth = document.getElementById("auth");
+  	var chargeBack = document.getElementById("chargeback");
+  	var decline = document.getElementById("decline");
+  }
+  
+  */
 
-  _export('createCountyWidget', createCountyWidget);
+		function transitionOut(tagName, idName) {
+			//console.log("transition out called")
+			target = d3.select(tagName + "#" + idName + "path");
+			target.transition().duration(500).style("opacity", "0");
+		}
 
-  function createCountyWidget(countyConfig, cboxGroupName) {
-    // build a css selector string for choosing the active bootstrap checkboxes (ie checkboxes that are checked)
-    var inputSelector = ["label.active input[name=", cboxGroupName, "]"].join("");
+		function transitionIn(tagName, idName) {
+			//console.log("transition in called", tagName, idName)
+			target = d3.select(tagName + "#" + idName + "path");
+			//console.log(target);
+			target.transition().duration(500).style("opacity", "1");
+		}
+	})(this);
 
-    // add the active checkboxes to countyConfig so initCountyMap can style them when the map is initialized.  If we don't do this, the regions will start out black.
-    countyConfig.dataRanges = getCheckedValues(inputSelector);
-    initCountyMap(countyConfig);
+	return _retrieveGlobal();
+});
+$__System.register("10", ["f"], function (_export) {
+  "use strict";
 
-    // on checkbox click update the color style for each region
-    // get all the labels with the same cboxGroupName and add mutation observers
-    addCheckboxObservers(cboxGroupName, styleCountyBySales);
+  var hasClass, allData;
+  //end drawDonut
+
+  _export("drawDonut", drawDonut);
+
+  function drawDonut(config) {
+    var radius = Math.min(config.width, config.height) / 2;
+    var innerRad = radius / 4;
+    var hoverRad = 15;
+    var padAngle = 0;
+    var svg = drawSvg();
+    var arc = defineArc(radius, radius - innerRad);
+    var hoverArc = defineArc(radius - innerRad, radius + hoverRad);
+    var pie = definePie();
+
+    drawText();
+
+    d3.csv(config.filePath, type, function (error, data) {
+      if (error) throw error;
+
+      //add sum to center
+      updateSum(svg, config, data);
+
+      //make a copy of the data
+      allData = data;
+
+      var path = svg.selectAll("path");
+      var g = svg.selectAll(".arc").data(pie(allData), function (d) {
+        return d[config.keys[0]];
+      });
+
+      enterAndUpdate(g, path, allData);
+    }); //end d3 read
+
+    return function updateDonut() {
+
+      var filteredData = filterData();
+      updateSum(svg, config, filteredData);
+
+      var path = svg.selectAll("path");
+      var g = svg.selectAll(".arc").data(pie(filteredData), function (d) {
+        return d[config.keys[0]];
+      });
+
+      enterAndUpdate(g, path, filteredData);
+      exit(g);
+    }; //end updateDonut
+
+    function type(d) {
+      d[config.keys[1]] = +d[config.keys[1]];
+      return d;
+    }
+
+    function drawSvg() {
+      return d3.select(config.parentDiv).classed("svg-container", true).append("svg").attr("viewBox", "0 0 " + config.width + " " + config.height)
+      //class for responsivenesss
+      .classed("svg-content-responsive-pie", true).attr("width", config.width).attr("height", config.height).append("g").attr("id", "donutchart").attr("transform", "translate(" + config.width / 2 + "," + config.height / 2 + ")");
+    }
+
+    function defineArc(outer, inner) {
+      return d3.arc().outerRadius(outer).innerRadius(inner);
+    }
+
+    function definePie() {
+      return d3.pie().sort(null).value(function (d) {
+        //return the numbers in csv(column 2)
+        return d[config.keys[1]];
+      }).padAngle(padAngle);
+    }
+
+    function filterData() {
+      var divs = [];
+      for (var i = 0; i < config.data.length; i++) {
+        divs[config.data[i]] = document.getElementById(config.data[i]);
+      }
+
+      var filteredData = allData.filter(function (d) {
+        if (divs[d[config.keys[0]]]) {
+          if (hasClass(divs[d[config.keys[0]]], "active")) return true;else return false;
+        }
+        return false;
+      });
+      return filteredData;
+    }
+
+    function updateSum(svg, config, data) {
+      var sum = 0;
+
+      data.forEach(function (d, j) {
+        sum += d[config.keys[1]];
+      });
+
+      //remove current total
+      svg.select("text.data").transition().duration(100).style("opacity", 0).remove();
+
+      //update total
+      svg.append("text").attr("dy", ".95em").style("text-anchor", "middle").style("opacity", 0).attr("class", "data").text(function () {
+        return sum;
+      }).transition().duration(1000).style("opacity", 1);
+    }
+
+    function drawText() {
+      //add text for inner circle
+      svg.append("text").attr("dy", "-0.5em").style("text-anchor", "middle").attr("class", "inside").text(function () {
+        return config.innerText;
+      });
+    }
+
+    function arcTween(a) {
+      var startAngle = a.startAngle; //<-- keep reference to start angle
+      var i = d3.interpolate(a.startAngle, a.endAngle); //<-- interpolate start to end
+      return function (t) {
+        return arc({ //<-- return arc at each iteration from start to interpolate end
+          startAngle: startAngle,
+          endAngle: i(t)
+        });
+      };
+    }
+
+    function enterAndUpdate(g, path, data) {
+      g.data(pie(data)).enter().append("g").attr("class", "arc").append("path").merge(path).data(pie(data)).on("mouseover", function (d) {
+        d3.select(this).transition().duration(1000).attr("d", hoverArc);
+      }).on("mouseout", function (d) {
+        d3.select(this).transition().duration(1000).attr("d", arc);
+      }).attr("class", function (d) {
+        return config.classMap[d.data[config.keys[0]]] + ' ' + d[config.keys[0]];
+      }).transition().duration(700).attrTween("d", arcTween);
+    }
+
+    function exit(g) {
+      g.exit().transition().duration(700).attr("d", arcTween).style("opacity", 0).remove();
+    }
   }
 
   return {
-    setters: [function (_) {
-      $ = _['default'];
-    }, function (_b) {
-      initCountyMap = _b.initCountyMap;
-      styleCountyBySales = _b.styleCountyBySales;
-    }, function (_c) {
-      addCheckboxObservers = _c.addCheckboxObservers;
-      getCheckedValues = _c.getCheckedValues;
+    setters: [function (_f) {
+      hasClass = _f.hasClass;
     }],
     execute: function () {}
   };
 });
-$__System.register('1', ['3', '4', '6', 'd'], function (_export) {
+$__System.register('11', ['10', 'd'], function (_export) {
+	'use strict';
+
+	var drawDonut, updateDonut, addCheckboxObservers, getCheckedValues;
+
+	_export('createDonutWidget', createDonutWidget);
+
+	function createDonutWidget(chartConfig, cboxGroupName) {
+		var cb = drawDonut(chartConfig);
+		addCheckboxObservers(cboxGroupName, cb);
+	}
+
+	return {
+		setters: [function (_) {
+			drawDonut = _.drawDonut;
+			updateDonut = _.updateDonut;
+		}, function (_d) {
+			addCheckboxObservers = _d.addCheckboxObservers;
+			getCheckedValues = _d.getCheckedValues;
+		}],
+		execute: function () {}
+	};
+});
+$__System.register('1', ['3', '4', '6', '11', 'c', 'e'], function (_export) {
   'use strict';
 
-  var bootstrap, addToggle, initMap, createCountyWidget, map1Config, map1, salesData, countyConfig;
+  var bootstrap, addToggle, initMap, createDonutWidget, createCountyWidget, drawSmoothLine, updateLine, map1Config, map1, salesData, countyConfig, donutConfig, xTickFormat, parseMonthYear, maxFunction, minFunction, smoothConfig, current, last;
   return {
     setters: [function (_) {
       bootstrap = _['default'];
@@ -8962,8 +9308,13 @@ $__System.register('1', ['3', '4', '6', 'd'], function (_export) {
       addToggle = _2['default'];
     }, function (_3) {
       initMap = _3['default'];
-    }, function (_d) {
-      createCountyWidget = _d.createCountyWidget;
+    }, function (_4) {
+      createDonutWidget = _4.createDonutWidget;
+    }, function (_c) {
+      createCountyWidget = _c.createCountyWidget;
+    }, function (_e) {
+      drawSmoothLine = _e.drawSmoothLine;
+      updateLine = _e.updateLine;
     }],
     execute: function () {
 
@@ -8996,6 +9347,75 @@ $__System.register('1', ['3', '4', '6', 'd'], function (_export) {
       };
 
       createCountyWidget(countyConfig, "countyRange");
+
+      donutConfig = {
+        //global config
+        width: 500,
+        height: 500,
+        filePath: "scripts/charts/donut/donutdata.csv",
+        parentDiv: "div#donutid",
+        keys: ["transactionType", "number"],
+        data: ["authorizations", "chargebacks", "declines"],
+        //row to css class
+        classMap: { "declines": "fill-danger", "authorizations": "fill-success", "chargebacks": "fill-warning" },
+
+        //donut
+        innerText: "TOTAL TRANS"
+      };
+
+      createDonutWidget(donutConfig, "transactionType");
+
+      xTickFormat = d3.timeFormat("%b");
+      parseMonthYear = d3.timeParse("%b-%y");
+
+      maxFunction = function maxFunction(d) {
+        return Math.max(d.current, d.last);
+      };
+
+      minFunction = function minFunction(d) {
+        return 0;
+      };
+
+      smoothConfig = {
+        //global config
+        width: 400,
+        height: 115,
+        filePath: "scripts/charts/smoothline/lineyearly.tsv",
+        parentDiv: "div#chartsmoothlineid",
+        keys: ["date", "last", "current"],
+        checkboxIds: {},
+        //column to css class
+        classMap: { "last": "fill-gray area", "current": "fill-brand-info area", "next": "fill-brand-info area" },
+
+        //line config
+        margin: { top: 20, right: 20, bottom: 30, left: 50 },
+        interpolate: "true",
+        xAxisLines: "true",
+        yAxisLines: "false",
+        xTickNumber: "8",
+        yTickNumber: "5",
+        xTickText: "",
+        yTickText: "MM",
+        xTickFormat: xTickFormat,
+        yTickFormat: "",
+        timeParse: parseMonthYear,
+        maxFunction: maxFunction,
+        minFunction: ""
+      };
+
+      drawSmoothLine(smoothConfig);
+
+      current = d3.select("#current");
+
+      current.on("click", function () {
+        updateLine("path", "current");
+      });
+      last = d3.select("#last");
+
+      last.on("click", function () {
+        updateLine("path", "last");
+      });
+      updateLine('path', 'last');
     }
   };
 });

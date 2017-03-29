@@ -11,11 +11,9 @@ System.config({
   paths: {
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*",
-    
     "charts/*": "scripts/charts/*",
     "donut/*": "scripts/charts/donut/*",
     "smoothline/*": "scripts/charts/smoothline/*",
-    
     "donut-widget/*": "scripts/charts/donutWidget/*",
     "county-widget/*": "scripts/countyWidget/*",
     "*": "scripts/*"
